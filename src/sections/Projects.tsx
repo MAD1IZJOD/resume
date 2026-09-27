@@ -1,7 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { useRef } from 'react'
 import type { Project } from '../content'
-import { projects } from '../content'
 import { useReveal } from '../lib/useReveal'
 
 export function Lines({ text, className }: { text: string | string[]; className?: string }) {
@@ -76,5 +75,3 @@ export function ProjectChapter({ project: p, align, children, tall }: Props) {
     </section>
   )
 }
-
-export const projectById = Object.fromEntries(projects.map((p) => [p.id, p])) as Record<Project['id'], Project>

@@ -83,6 +83,8 @@ export const projects: Project[] = [
   },
 ]
 
+export const projectById = Object.fromEntries(projects.map((p) => [p.id, p])) as Record<Project['id'], Project>
+
 export const hackathon = {
   team: 'NYMERIA',
   org: 'Global AI Community',

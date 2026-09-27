@@ -199,7 +199,7 @@ export function SimDistrict() {
     for (let i = 0; i < 24; i++) {
       const target = story.simBars[i] ?? 0
       heights.current[i] += (target - heights.current[i]) * k
-      const h = 0.15 + heights.current[i] * 9
+      const h = 0.15 + heights.current[i] * 6
       const cx = (i % cols) - (cols - 1) / 2
       const cz = Math.floor(i / cols) - 1.5
       tmpP.set(cx * 1.9, h / 2, cz * 1.9)
