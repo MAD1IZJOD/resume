@@ -1,6 +1,8 @@
-import { useCallback, useRef } from 'react'
-import { hackathon, mhmun } from '../content'
-import { mhmunFill, SEATS } from '../lib/chapterProgress'
+import type { CSSProperties } from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { hackathon, hackfest, mhmun } from '../content'
+import { localT, mhmunFill, SEATS } from '../lib/chapterProgress'
+import { story } from '../lib/store'
 import { useStoryFrame } from '../lib/useStoryFrame'
 import { useReveal } from '../lib/useReveal'
 import { Lines } from './Projects'
@@ -91,6 +93,103 @@ export function Mhmun() {
           </p>
           <p className="mhmun-note">
             {mhmun.attendees}+ students. {mhmun.note}
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export function Hackfest() {
+  const ref = useRef<HTMLElement>(null)
+  const [track, setTrack] = useState(0)
+  const picked = useRef(false)
+  useReveal(ref)
+
+  // scrolling walks through the tracks, unless the visitor has picked one
+  const onFrame = useCallback((t: number) => {
+    const local = localT(t, 'hackfest')
+    if (local < -0.3 || local > 1) {
+      picked.current = false
+      return
+    }
+    if (picked.current) return
+    const next = Math.min(2, Math.max(0, Math.floor((local - 0.05) / 0.2)))
+    setTrack((cur) => (cur === next ? cur : next))
+  }, [])
+  useStoryFrame(ref, onFrame)
+
+  useEffect(() => {
+    story.track = track
+  }, [track])
+
+  const tabBase = useId()
+  const current = hackfest.tracks[track]
+
+  return (
+    <section
+      ref={ref}
+      id="hackfest"
+      data-chapter="hackfest"
+      className="chapter event hackfest"
+      style={{ '--accent': current.color } as CSSProperties}
+      aria-labelledby="hackfest-title"
+    >
+      <div className="sticky">
+        <div className="event-card event-card--left">
+          <p className="mono event-kicker" data-reveal>
+            <span>Event · Organised</span>
+            <span className="event-rule" aria-hidden />
+            <span>{hackfest.venue}</span>
+          </p>
+          <h2 id="hackfest-title" className="display hackfest-title">
+            <Lines text={['Hansraj', 'Hackfest']} />
+          </h2>
+
+          <div className="hf-tabs" role="tablist" aria-label="Hackfest tracks" data-reveal>
+            {hackfest.tracks.map((tr, i) => (
+              <button
+                key={tr.id}
+                id={`${tabBase}-tab-${i}`}
+                type="button"
+                role="tab"
+                aria-selected={track === i}
+                aria-controls={`${tabBase}-panel`}
+                tabIndex={track === i ? 0 : -1}
+                style={{ '--c': tr.color } as CSSProperties}
+                onClick={() => {
+                  picked.current = true
+                  setTrack(i)
+                }}
+                onKeyDown={(e) => {
+                  if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
+                  const n = (i + (e.key === 'ArrowRight' ? 1 : 2)) % 3
+                  picked.current = true
+                  setTrack(n)
+                  document.getElementById(`${tabBase}-tab-${n}`)?.focus()
+                }}
+              >
+                {tr.name}
+              </button>
+            ))}
+          </div>
+          <p id={`${tabBase}-panel`} role="tabpanel" aria-labelledby={`${tabBase}-tab-${track}`} className="hf-panel" data-reveal>
+            <span key={current.id}>{current.line}</span>
+          </p>
+
+          <div className="hf-stats" data-reveal>
+            <p>
+              <span className="hf-num">{hackfest.attendees}+</span>
+              <span className="mono">students</span>
+            </p>
+            <p>
+              <span className="serif hf-role">{hackfest.role}</span>
+              <span className="mono">my role</span>
+            </p>
+          </div>
+          <p className="project-proves" data-reveal>
+            <span className="mono">What it proves</span>
+            <span className="serif">I can lead — and help others learn to build.</span>
           </p>
         </div>
       </div>

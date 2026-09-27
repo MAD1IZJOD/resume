@@ -109,9 +109,9 @@ export const hackfest = {
   role: 'President',
   venue: 'Mahatma Hansraj Modern School, Jhansi',
   tracks: [
-    { id: 'cloud', name: 'Cloud', line: 'Participants learned cloud computing.' },
-    { id: 'web', name: 'Web', line: 'Participants learned web development.' },
-    { id: 'design', name: 'Design', line: 'Participants learned design.' },
+    { id: 'cloud', name: 'Cloud', line: 'Participants were taught cloud computing.', color: '#9ec9ff' },
+    { id: 'web', name: 'Web', line: 'Participants were taught web development.', color: '#7dffb2' },
+    { id: 'design', name: 'Design', line: 'Participants were taught design.', color: '#b69cff' },
   ],
 }
 

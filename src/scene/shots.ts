@@ -70,8 +70,8 @@ export const shots: Record<ChapterId, Key[]> = {
     { at: 0.72, pos: [0, 32, -174], look: [0, -3, -206], side: 0, up: 0.12, fog: [30, 120] },
   ],
   hackfest: [
-    { at: 0, pos: [0, 8, -231], look: [0, -1, P.hackfest[2]], side: 0, up: 0.14, fog: [18, 80] },
-    { at: 0.7, pos: [0, 6, -235], look: [0, -1, P.hackfest[2]], side: 0, up: 0.14, fog: [18, 80] },
+    { at: 0, pos: [0, 15, -222], look: [0, 0, P.hackfest[2]], side: 0.36, up: 0.24, fog: [20, 100] },
+    { at: 0.7, pos: [0, 12, -225], look: [0, 0.5, P.hackfest[2]], side: 0.36, up: 0.24, fog: [20, 100] },
   ],
   journey: [
     { at: 0, pos: [46, 86, -92], look: [0, -3, -132], side: 0, up: 0.05, fog: [80, 300] },

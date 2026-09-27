@@ -717,3 +717,88 @@
     0 1px 2px rgba(0, 0, 0, 0.9),
     0 0 18px rgba(0, 0, 0, 0.9);
 }
+
+/* ---------- Hansraj Hackfest ---------- */
+
+.hackfest {
+  min-height: 300vh;
+}
+
+.hackfest-title {
+  font-size: clamp(56px, 8vw, 128px);
+}
+
+.hf-tabs {
+  display: inline-grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: 8px;
+}
+
+.hf-tabs button {
+  --c: var(--bone);
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.35s,
+    color 0.35s,
+    border-color 0.35s;
+}
+
+.hf-tabs button:hover {
+  border-color: var(--c);
+}
+
+.hf-tabs button[aria-selected='true'] {
+  background: var(--c);
+  border-color: var(--c);
+  color: var(--ink);
+}
+
+.hf-panel {
+  margin: 0;
+  min-height: 1.5em;
+  font-size: clamp(18px, 1.5vw, 22px);
+  color: var(--bone-dim);
+}
+
+.hf-panel span {
+  display: inline-block;
+  animation: role-in 0.6s var(--ease-out) both;
+}
+
+.hf-stats {
+  display: flex;
+  gap: 40px;
+  align-items: flex-end;
+}
+
+.hf-stats p {
+  margin: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.hf-stats .mono {
+  color: var(--muted);
+}
+
+.hf-num {
+  font-size: clamp(56px, 6vw, 92px);
+  font-weight: 250;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.hf-role {
+  font-size: clamp(36px, 3.6vw, 56px);
+  line-height: 0.95;
+  color: var(--accent);
+}
