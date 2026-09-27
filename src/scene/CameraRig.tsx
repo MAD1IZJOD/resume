@@ -54,7 +54,7 @@ export function CameraRig({ reduced }: { reduced: boolean }) {
     const up = portrait ? pose.up : 0
     off.current.side += (side - off.current.side) * k
     off.current.up += (up - off.current.up) * k
-    camera.setViewOffset(width, height, -off.current.side * width * 0.5, off.current.up * height, width, height)
+    camera.setViewOffset(width, height, -off.current.side * width * 0.42, off.current.up * height, width, height)
     camera.updateProjectionMatrix()
 
     const fog = scene.fog as THREE.Fog | null

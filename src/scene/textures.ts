@@ -88,9 +88,7 @@ export function windowsTexture(cols: number, rows: number, lit: number, seed: nu
   g.globalAlpha = 1
   const t = new THREE.CanvasTexture(c)
   t.colorSpace = THREE.SRGBColorSpace
-  t.magFilter = THREE.NearestFilter
-  t.generateMipmaps = false
-  t.minFilter = THREE.LinearFilter
+  t.anisotropy = 4
   return t
 }
 

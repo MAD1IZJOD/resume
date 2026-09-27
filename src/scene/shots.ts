@@ -17,7 +17,7 @@ export type Key = { at: number; pos: V3; look: V3; side?: number; up?: number; f
 // world stretches away down -z, so diving *through* the phone leads into it.
 export const places = {
   phone: [0, 0, 0] as V3,
-  beacon: [0, -3, -36] as V3,
+  beacon: [6, -3, -30] as V3,
   unioffice: [-9, -3, -60] as V3,
   orcades: [9, -3, -86] as V3,
   simulator: [-9, -3, -110] as V3,
@@ -40,24 +40,24 @@ export const shots: Record<ChapterId, Key[]> = {
     { at: 0.62, pos: [0, 0, -0.4], look: [0, -0.6, -30], side: 0, up: 0, fog: [4, 30] },
   ],
   about: [
-    { at: 0, pos: [0, 1.5, -10], look: [0, -1, -44], side: 0.35, up: 0.18, fog: [10, 60] },
-    { at: 0.6, pos: [-3, 9, -14], look: [2, -2, -64], side: 0.4, up: 0.2, fog: [16, 110] },
+    { at: 0, pos: [-2, 1, -8], look: [5, 4, -30], side: 0.4, up: 0.18, fog: [10, 70] },
+    { at: 0.6, pos: [-5, 6, -10], look: [4, 3, -40], side: 0.4, up: 0.2, fog: [16, 110] },
   ],
   unioffice: [
-    { at: 0, pos: [5, 2, -40], look: [P.unioffice[0], 6, P.unioffice[2]], side: -0.45, up: 0.2, fog: [16, 80] },
-    { at: 0.6, pos: [3.5, 7, -44], look: [P.unioffice[0], 14, P.unioffice[2]], side: -0.45, up: 0.22, fog: [16, 80] },
+    { at: 0, pos: [8, 3, -34], look: [P.unioffice[0], 8, P.unioffice[2]], side: -0.45, up: 0.2, fog: [18, 90] },
+    { at: 0.6, pos: [6, 8, -37], look: [P.unioffice[0], 15, P.unioffice[2]], side: -0.45, up: 0.22, fog: [18, 90] },
   ],
   orcades: [
-    { at: 0, pos: [-4, 2, -71], look: [P.orcades[0], 3.5, P.orcades[2]], side: 0.45, up: 0.2, fog: [14, 70] },
-    { at: 0.6, pos: [-1, 4, -68.5], look: [P.orcades[0], 4.2, P.orcades[2]], side: 0.45, up: 0.2, fog: [14, 70] },
+    { at: 0, pos: [-6, 3, -66], look: [P.orcades[0], 4.5, P.orcades[2]], side: 0.45, up: 0.2, fog: [16, 80] },
+    { at: 0.6, pos: [-3, 5.5, -65], look: [P.orcades[0], 5, P.orcades[2]], side: 0.45, up: 0.2, fog: [16, 80] },
   ],
   simulator: [
     { at: 0, pos: [4, 9, -96], look: [P.simulator[0], -1.5, P.simulator[2]], side: -0.42, up: 0.26, fog: [14, 70] },
     { at: 0.65, pos: [3, 7, -99], look: [P.simulator[0], -1.5, P.simulator[2]], side: -0.42, up: 0.26, fog: [14, 70] },
   ],
   vinacou: [
-    { at: 0, pos: [-3, 1.5, -123], look: [P.vinacou[0], 0.8, P.vinacou[2]], side: 0.45, up: 0.2, fog: [12, 60] },
-    { at: 0.6, pos: [-1.5, 2.4, -121], look: [P.vinacou[0], 1, P.vinacou[2]], side: 0.45, up: 0.2, fog: [12, 60] },
+    { at: 0, pos: [-5, 2.2, -118], look: [P.vinacou[0], 1.2, P.vinacou[2]], side: 0.5, up: 0.2, fog: [14, 70] },
+    { at: 0.6, pos: [-3.5, 3.4, -117.5], look: [P.vinacou[0], 1.4, P.vinacou[2]], side: 0.5, up: 0.2, fog: [14, 70] },
   ],
   nymeria: [
     { at: 0, pos: [0, 5, -147], look: [0, 0.5, P.nymeria[2]], side: 0.3, up: 0.18, fog: [16, 70] },
