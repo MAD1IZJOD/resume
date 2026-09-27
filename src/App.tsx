@@ -11,6 +11,8 @@ import { Services } from './sections/Services'
 import { Contact } from './sections/Contact'
 import { ProjectChapter } from './sections/Projects'
 import { SimDemo } from './sections/SimDemo'
+import { Cursor } from './ui/Cursor'
+import { Nav } from './ui/Nav'
 import { PhoneScreenPortal } from './ui/PhoneScreen'
 import { Preloader } from './ui/Preloader'
 
@@ -88,6 +90,8 @@ export default function App() {
       {env.webgl && <PhoneScreenPortal reduced={env.reduced} />}
 
       <Preloader ready={sceneReady} skip={!!deepLink} onDone={onIntro} />
+      <Nav />
+      <Cursor />
 
       <main id="main">
         <Hero />
