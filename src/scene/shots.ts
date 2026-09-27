@@ -92,7 +92,8 @@ export const shots: Record<ChapterId, Key[]> = {
   ],
   contact: [
     { at: 0, pos: [0, 3, 16], look: [0, 0, -40], side: 0, up: 0.1, fog: [30, 300] },
-    { at: 0.5, pos: [0, 0, 7], look: [0, 0, 0], side: 0, up: 0.12, fog: [10, 40] },
+    { at: 0.3, pos: [0, 0, 7.5], look: [0, 0, 0], side: 0, up: 0.1, fog: [10, 40] },
+    { at: 0.62, pos: [0, 0.6, 8.5], look: [0, 0.6, 0], side: 0, up: 0.1, fog: [10, 40] },
   ],
 }
 

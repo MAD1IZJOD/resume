@@ -5,6 +5,7 @@ import * as THREE from 'three'
 import type { Tier } from '../lib/env'
 import { CameraRig } from './CameraRig'
 import { Phone } from './Phone'
+import { Core } from './world/Core'
 import { World } from './world/World'
 
 type Props = { tier: Tier; reduced: boolean; onReady: () => void }
@@ -41,6 +42,7 @@ export default function Experience({ tier, reduced, onReady }: Props) {
 
       <Phone reduced={reduced} />
       <World tier={tier} />
+      <Core />
     </Canvas>
   )
 }

@@ -25,7 +25,7 @@ export function World({ tier }: { tier: Tier }) {
     const t = story.t
     g.visible = t > 0.9
     // collapse during the first half of the contact chapter
-    const c = Math.min(1, Math.max(0, (t - contactIndex) / 0.45))
+    const c = Math.min(1, Math.max(0, (t - contactIndex) / 0.3))
     const e = c * c * (3 - 2 * c)
     const s = Math.max(0.0001, 1 - e)
     g.scale.setScalar(s)

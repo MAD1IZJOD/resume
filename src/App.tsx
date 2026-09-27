@@ -7,6 +7,8 @@ import { About } from './sections/About'
 import { Hackfest, Mhmun, Nymeria } from './sections/Events'
 import { Hero, Portal } from './sections/Hero'
 import { Journey } from './sections/Journey'
+import { Services } from './sections/Services'
+import { Contact } from './sections/Contact'
 import { ProjectChapter } from './sections/Projects'
 import { SimDemo } from './sections/SimDemo'
 import { PhoneScreenPortal } from './ui/PhoneScreen'
@@ -101,16 +103,8 @@ export default function App() {
         <Mhmun />
         <Hackfest />
         <Journey />
-        {chapters.slice(11).map((c) => (
-          <section key={c.id} id={c.id} data-chapter={c.id} className="chapter" style={{ minHeight: '200vh' }}>
-            <div className="sticky" style={{ padding: 'var(--gutter)' }}>
-              <p className="mono">{c.group}</p>
-              <h2 className="display" style={{ fontSize: 'clamp(48px, 9vw, 150px)' }}>
-                {c.label}
-              </h2>
-            </div>
-          </section>
-        ))}
+        <Services />
+        <Contact />
       </main>
     </>
   )
