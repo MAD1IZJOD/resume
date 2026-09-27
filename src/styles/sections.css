@@ -597,7 +597,7 @@
 
 .mhmun-top {
   position: absolute;
-  top: calc(var(--gutter) + 40px);
+  top: calc(var(--gutter) + 64px);
   left: var(--gutter);
   right: var(--gutter);
   display: flex;
@@ -646,13 +646,13 @@
   position: absolute;
   left: 50%;
   top: 22vh;
-  translate: -50% 0;
   width: min(900px, calc(100vw - 2 * var(--gutter)));
   display: grid;
   justify-items: center;
   gap: 10px;
   opacity: 0;
-  transform: translateY(30px) scale(0.98);
+  /* centring lives in transform: the CSS minifier drops `translate` when a rule also sets `transform` */
+  transform: translate(-50%, 30px) scale(0.98);
   transition:
     opacity 1s var(--ease-out),
     transform 1.2s var(--ease-out);
@@ -660,7 +660,7 @@
 
 .mhmun-title[data-full='true'] {
   opacity: 1;
-  transform: none;
+  transform: translateX(-50%);
 }
 
 .mhmun-title h2 {
@@ -1306,5 +1306,12 @@
   .project--vinacou .project-proves,
   .room-note {
     display: none;
+  }
+}
+
+/* short desktop screens: keep the About card clear of the floating nav mark */
+@media (max-height: 940px) and (min-width: 821px) and (min-aspect-ratio: 9/10) {
+  .about-card {
+    gap: 17px;
   }
 }
