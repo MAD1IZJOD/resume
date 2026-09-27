@@ -45,10 +45,10 @@ function journeyKeys(): Key[] {
 }
 
 export const shots: Record<ChapterId, Key[]> = {
-  hello: [{ at: 0, pos: [0, 0, 7.4], look: [0, 0, 0], side: 0, up: 0.04, fog: [14, 40], mz: 0.66 }],
+  hello: [{ at: 0, pos: [0, 0, 7.4], look: [0, 0, 0], side: 0, up: 0.04, fog: [9, 24], mz: 0.66 }],
   portal: [
-    { at: 0.05, pos: [0, 0, 5.2], look: [0, 0, 0], side: 0, up: 0, fog: [14, 40], mz: 0.8 },
-    { at: 0.55, pos: [0, 0, 0.42], look: [0, 0, -1], side: 0, up: 0, fog: [6, 34] },
+    { at: 0.05, pos: [0, 0, 5.2], look: [0, 0, 0], side: 0, up: 0, fog: [9, 24], mz: 0.8 },
+    { at: 0.55, pos: [0, 0, 0.42], look: [0, 0, -1], side: 0, up: 0, fog: [4, 22] },
     { at: 0.62, pos: [0, 0, -0.4], look: [0, -0.6, -30], side: 0, up: 0, fog: [4, 30] },
   ],
   about: [

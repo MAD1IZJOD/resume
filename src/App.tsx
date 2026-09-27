@@ -79,23 +79,23 @@ export default function App() {
         Skip the intro
       </a>
 
-      <div className="stage" aria-hidden>
+      <div className="stage">
         {env.webgl ? (
           <Suspense fallback={null}>
             <Experience tier={env.tier} reduced={env.reduced} onReady={onSceneReady} />
           </Suspense>
         ) : (
-          <div className="stage-fallback" />
+          <div className="stage-fallback" aria-hidden />
         )}
       </div>
-      {env.webgl && <PhoneScreenPortal reduced={env.reduced} />}
+      <PhoneScreenPortal reduced={env.reduced} />
 
       <Preloader ready={sceneReady} skip={!!deepLink} onDone={onIntro} />
       <Nav />
       <Cursor />
 
       <main id="main">
-        <Hero />
+        <Hero webgl={env.webgl} />
         <Portal />
         <About />
         <ProjectChapter project={projectById.unioffice} align="right" />

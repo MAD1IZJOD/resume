@@ -21,7 +21,7 @@ export default function Experience({ tier, reduced, onReady }: Props) {
         gl.toneMapping = THREE.ACESFilmicToneMapping
         gl.toneMappingExposure = 1.05
         scene.background = new THREE.Color('#0b0a09')
-        scene.fog = new THREE.Fog('#0b0a09', 14, 40)
+        scene.fog = new THREE.Fog('#0b0a09', 9, 24)
       }}
       aria-hidden
     >

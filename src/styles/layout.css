@@ -7,7 +7,7 @@
   background: var(--ink);
 }
 
-.stage > div {
+.stage > div:not(.phone-css3d) {
   position: absolute !important;
   inset: 0;
 }
@@ -314,4 +314,30 @@ main [data-interactive] {
     font-size: 0;
     gap: 0;
   }
+}
+
+.phone-fallback {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 324px;
+  height: auto;
+  max-height: 78vh;
+  aspect-ratio: 324 / 689;
+  padding: 12px;
+  border-radius: 40px;
+  background: linear-gradient(160deg, #4a433c, #1c1916);
+  box-shadow:
+    0 40px 120px rgba(255, 90, 31, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.phone-fallback .phone-screen {
+  position: relative !important;
+  transform: none !important;
+  border-radius: 30px;
+  background: radial-gradient(circle at 50% 25%, #2a1a12, #0b0a09 70%);
+  pointer-events: auto;
 }

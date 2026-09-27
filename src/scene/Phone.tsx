@@ -57,7 +57,8 @@ export function Phone({ reduced }: { reduced: boolean }) {
     return { renderer, scene, obj }
   }, [])
   useEffect(() => {
-    const parent = gl.domElement.parentElement
+    // mount outside the aria-hidden canvas wrapper: the screen holds real, focusable buttons
+    const parent = gl.domElement.closest('.stage') ?? gl.domElement.parentElement
     parent?.appendChild(css.renderer.domElement)
     return () => {
       css.renderer.domElement.remove()

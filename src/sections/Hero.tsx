@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
+import { getScreenHost } from '../scene/screenHost'
+import { useReveal } from '../lib/useReveal'
 import { person } from '../content'
 import { useUI } from '../lib/store'
 
 const roles = ['builder', 'developer', 'designer', 'product builder', 'creative technologist', 'entrepreneur', 'event organiser']
 
-export function Hero() {
+export function Hero({ webgl }: { webgl: boolean }) {
   const introDone = useUI((s) => s.introDone)
   const [role, setRole] = useState(0)
   const ref = useRef<HTMLElement>(null)
@@ -18,6 +20,7 @@ export function Hero() {
   return (
     <section ref={ref} id="hello" data-chapter="hello" className="chapter hero" data-ready={introDone} aria-labelledby="hero-title">
       <div className="hero-inner">
+        {!webgl && <FallbackPhone />}
         <div className="hero-corner hero-tl">
           <h1 id="hero-title" className="hero-title">
             <span className="mono">Madhavan Sahu</span>
@@ -50,15 +53,36 @@ export function Hero() {
   )
 }
 
+/** Without WebGL, the phone screen lives in a plain CSS device. */
+function FallbackPhone() {
+  const ref = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const host = getScreenHost()
+    ref.current?.appendChild(host)
+    host.style.opacity = '1'
+    host.style.visibility = 'visible'
+  }, [])
+  return <div ref={ref} className="phone-fallback" />
+}
+
 export function Portal() {
+  const ref = useRef<HTMLElement>(null)
+  useReveal(ref, { start: 'top 40%' })
   return (
-    <section id="portal" data-chapter="portal" className="chapter portal" aria-label="Entering the universe">
+    <section ref={ref} id="portal" data-chapter="portal" className="chapter portal" aria-label="Entering the universe">
       <div className="sticky portal-inner">
-        <p className="portal-line portal-a">
+        <p className="portal-line portal-a" data-reveal>
           <span className="mono">Step inside.</span>
         </p>
         <p className="portal-line portal-b display">
-          Everything I’ve built <em className="serif">lives in here.</em>
+          <span className="line-mask">
+            <span>Everything I’ve built</span>
+          </span>
+          <span className="line-mask">
+            <span>
+              <em className="serif">lives in here.</em>
+            </span>
+          </span>
         </p>
       </div>
     </section>

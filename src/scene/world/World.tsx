@@ -30,7 +30,8 @@ export function World({ tier }: { tier: Tier }) {
     const e = c * c * (3 - 2 * c)
     const s = Math.max(0.0001, 1 - e)
     g.scale.setScalar(s)
-    g.position.y = e * 2
+    // until the camera is inside the phone, park the world far below the scene
+    g.position.y = t < 1.2 ? -1000 : e * 2
   })
   return (
     <group ref={root}>
