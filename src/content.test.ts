@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import * as content from './content'
 import { chapters, hackathon, hackfest, mhmun, person, projects, timeline } from './content'
 import { shots } from './scene/shots'
 
@@ -32,5 +33,9 @@ describe('content', () => {
 
   it('has camera shots for every chapter', () => {
     for (const c of chapters) expect(shots[c.id]?.length).toBeGreaterThan(0)
+  })
+
+  it('keeps em dashes out of the copy', () => {
+    expect(JSON.stringify(content)).not.toContain(String.fromCharCode(0x2014))
   })
 })

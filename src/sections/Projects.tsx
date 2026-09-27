@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { useRef } from 'react'
 import type { Project } from '../content'
+import { copy } from '../content'
 import { useReveal } from '../lib/useReveal'
 
 export function Lines({ text, className }: { text: string | string[]; className?: string }) {
@@ -62,12 +63,12 @@ export function ProjectChapter({ project: p, align, children, tall }: Props) {
             ))}
           </div>
           <p className="project-proves" data-reveal>
-            <span className="mono">What it proves</span>
+            <span className="mono">{copy.project.provesLabel}</span>
             <span className="serif">{p.proves}</span>
           </p>
           {children}
           <div className="project-cta" data-reveal>
-            <ExternalButton href={p.url} label={`Visit ${p.name}`} accent={p.accent} />
+            <ExternalButton href={p.url} label={`${copy.project.visit} ${p.name}`} accent={p.accent} />
             <span className="mono project-url">{p.displayUrl}</span>
           </div>
         </div>

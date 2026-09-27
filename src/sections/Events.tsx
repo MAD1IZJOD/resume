@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
-import { hackathon, hackfest, mhmun } from '../content'
+import { copy, hackathon, hackfest, mhmun } from '../content'
 import { localT, mhmunFill, SEATS } from '../lib/chapterProgress'
 import { story } from '../lib/store'
 import { useStoryFrame } from '../lib/useStoryFrame'
@@ -15,7 +15,7 @@ export function Nymeria() {
       <div className="sticky">
         <div className="event-card event-card--left">
           <p className="mono event-kicker" data-reveal>
-            <span>Achievement</span>
+            <span>{copy.nymeria.kicker}</span>
             <span className="event-rule" aria-hidden />
             <span>
               {hackathon.org} · {hackathon.chapter}
@@ -25,7 +25,7 @@ export function Nymeria() {
             <Lines text={hackathon.team} />
           </h2>
           <p className="nymeria-result" data-reveal>
-            <span className="serif">{hackathon.result}.</span>
+            <span className="serif">{copy.nymeria.result}</span>
             <span className="mono">
               {hackathon.org} {hackathon.chapter} {hackathon.event}
             </span>
@@ -40,13 +40,13 @@ export function Nymeria() {
               <dd>{hackathon.result}</dd>
             </div>
             <div>
-              <dt className="mono">My part</dt>
-              <dd>All of the technical work</dd>
+              <dt className="mono">{copy.nymeria.partLabel}</dt>
+              <dd>{copy.nymeria.part}</dd>
             </div>
           </dl>
           <p className="project-proves" data-reveal style={{ ['--accent' as string]: '#ffd27a' }}>
-            <span className="mono">What it proves</span>
-            <span className="serif">I execute technically — on a hackathon clock.</span>
+            <span className="mono">{copy.project.provesLabel}</span>
+            <span className="serif">{copy.nymeria.line}</span>
           </p>
         </div>
       </div>
@@ -72,7 +72,9 @@ export function Mhmun() {
     <section ref={ref} id="mhmun" data-chapter="mhmun" className="chapter event mhmun" aria-labelledby="mhmun-title">
       <div className="sticky mhmun-inner">
         <p className="mono mhmun-top" data-reveal>
-          <span>Event · {mhmun.year}</span>
+          <span>
+            {copy.mhmun.kicker} · {mhmun.year}
+          </span>
           <span>{mhmun.venue}</span>
         </p>
         <div className="mhmun-count" aria-hidden>
@@ -82,7 +84,7 @@ export function Mhmun() {
           <span className="mhmun-plus">+</span>
         </div>
         <p className="mono mhmun-unit" aria-hidden>
-          students in the room · every figure here is one of them
+          {copy.mhmun.unit}
         </p>
         <div ref={title} className="mhmun-title" data-full="false">
           <h2 id="mhmun-title" className="display">
@@ -92,7 +94,7 @@ export function Mhmun() {
             <span className="serif">{mhmun.role}</span>
           </p>
           <p className="mhmun-note">
-            {mhmun.attendees}+ students. {mhmun.note}
+            {mhmun.story} {mhmun.note}
           </p>
         </div>
       </div>
@@ -138,7 +140,7 @@ export function Hackfest() {
       <div className="sticky">
         <div className="event-card event-card--left">
           <p className="mono event-kicker" data-reveal>
-            <span>Event · Organised</span>
+            <span>{copy.hackfest.kicker}</span>
             <span className="event-rule" aria-hidden />
             <span>{hackfest.venue}</span>
           </p>
@@ -184,12 +186,12 @@ export function Hackfest() {
             </p>
             <p>
               <span className="serif hf-role">{hackfest.role}</span>
-              <span className="mono">my role</span>
+              <span className="mono">{copy.hackfest.roleLabel}</span>
             </p>
           </div>
           <p className="project-proves" data-reveal>
-            <span className="mono">What it proves</span>
-            <span className="serif">I can lead — and help others learn to build.</span>
+            <span className="mono">{copy.project.provesLabel}</span>
+            <span className="serif">{copy.hackfest.line}</span>
           </p>
         </div>
       </div>

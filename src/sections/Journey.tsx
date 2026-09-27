@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react'
-import { timeline } from '../content'
+import { copy, timeline } from '../content'
 import { journeyProgress } from '../lib/chapterProgress'
 import { useReveal } from '../lib/useReveal'
 import { useStoryFrame } from '../lib/useStoryFrame'
@@ -41,10 +41,10 @@ export function Journey() {
       <div className="sticky journey-inner">
         <header className="journey-head">
           <p className="mono journey-kicker" data-reveal>
-            The journey so far
+            {copy.journey.kicker}
           </p>
           <h2 id="journey-title" className="display journey-title">
-            <Lines text={['From Jhansi', 'to now.']} />
+            <Lines text={copy.journey.title} />
           </h2>
         </header>
 

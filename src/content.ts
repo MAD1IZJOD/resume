@@ -1,5 +1,8 @@
-// Every fact on the site lives here. Keep it accurate — nothing in this file
-// should be embellished beyond what Madhavan has actually done.
+// Every fact and every line of copy on the site lives here. Keep it accurate:
+// nothing in this file should be embellished beyond what Madhavan has actually done.
+//
+// The thread running through it: I build things. I build things with people.
+// I'm still building.
 
 export const person = {
   name: 'Madhavan Sahu',
@@ -34,13 +37,13 @@ export const projects: Project[] = [
     id: 'unioffice',
     index: '01',
     name: 'UNIOFFICE',
-    kicker: 'Flagship product',
+    kicker: 'My biggest build',
     status: 'Live · in testing',
     lines: [
-      'My biggest project so far.',
-      'It’s live, it’s in its testing phase, and I’m building it every day.',
+      'The biggest thing I’ve built so far.',
+      'It’s live and in testing right now, and I’m still working on it every day, fixing things and making it better.',
     ],
-    proves: 'I build real products — not just pages.',
+    proves: 'I don’t just make pages. I make products.',
     url: 'https://unioffice.pro',
     displayUrl: 'unioffice.pro',
     accent: '#d7ff4a',
@@ -51,8 +54,8 @@ export const projects: Project[] = [
     name: 'ORCADES',
     kicker: 'Creative agency',
     status: 'Live',
-    lines: ['“We build digital worlds.”', 'A creative agency project for websites, software, design and digital experiences.'],
-    proves: 'I design and build creative technology.',
+    lines: ['“We build digital worlds.”', 'That’s ORCADES, a creative agency project I built for websites, software, design and digital experiences.'],
+    proves: 'I like making things that look and feel different.',
     url: 'https://orcades.vercel.app',
     displayUrl: 'orcades.vercel.app',
     accent: '#ff5fd2',
@@ -61,10 +64,10 @@ export const projects: Project[] = [
     id: 'simulator',
     index: '03',
     name: 'Business Simulator',
-    kicker: 'Interactive system',
+    kicker: 'A system you can play',
     status: 'Live',
-    lines: ['A business simulator that runs in the browser.', 'Systems, rules and numbers that react to your decisions.'],
-    proves: 'I build systems and interactive products.',
+    lines: ['A business simulator you can play right in your browser.', 'Rules, markets and numbers that react to every decision you make.'],
+    proves: 'I like building systems, not just screens.',
     url: 'https://business-simulator-eight.vercel.app/',
     displayUrl: 'business-simulator-eight.vercel.app',
     accent: '#ffb42e',
@@ -73,10 +76,10 @@ export const projects: Project[] = [
     id: 'vinacou',
     index: '04',
     name: 'Vinacou',
-    kicker: 'Commercial website',
+    kicker: 'Built for a business',
     status: 'Live',
-    lines: ['A website for Vinacou, a firm selling acoustic interiors.', 'Built for a real business with real customers to reach.'],
-    proves: 'I build websites for real businesses.',
+    lines: ['I built the website for Vinacou, a firm that sells acoustic interiors.', 'A real business with real customers, so it had to be clear and genuinely useful.'],
+    proves: 'I build for real businesses, too.',
     url: 'https://vinayakoo.vercel.app/',
     displayUrl: 'vinayakoo.vercel.app',
     accent: '#d9a86c',
@@ -91,7 +94,8 @@ export const hackathon = {
   chapter: 'Gurgaon Chapter',
   event: 'Hackathon',
   result: 'Winner',
-  role: 'I handled all of the technical work for my team.',
+  // a team achievement plus my part in it, never "I did everything"
+  role: 'I took care of the technical side of what we built.',
 }
 
 export const mhmun = {
@@ -101,6 +105,8 @@ export const mhmun = {
   role: 'Creative Director',
   venue: 'Mahatma Hansraj Modern School, Jhansi',
   note: 'One of the biggest MUN events in North India in 2024.',
+  // how it felt, not just the job title
+  story: 'I got to help shape an event that brought 1,600+ students together, right at my own school in Jhansi.',
 }
 
 export const hackfest = {
@@ -109,32 +115,33 @@ export const hackfest = {
   role: 'President',
   venue: 'Mahatma Hansraj Modern School, Jhansi',
   tracks: [
-    { id: 'cloud', name: 'Cloud', line: 'Participants were taught cloud computing.', color: '#9ec9ff' },
-    { id: 'web', name: 'Web', line: 'Participants were taught web development.', color: '#7dffb2' },
-    { id: 'design', name: 'Design', line: 'Participants were taught design.', color: '#b69cff' },
+    { id: 'cloud', name: 'Cloud', line: 'One track where students learned cloud computing.', color: '#9ec9ff' },
+    { id: 'web', name: 'Web', line: 'One where they learned to build for the web.', color: '#7dffb2' },
+    { id: 'design', name: 'Design', line: 'And one where they learned design.', color: '#b69cff' },
   ],
 }
 
 export type Milestone = { place: string; title: string; detail?: string; stat?: string; role?: string }
 
 export const timeline: Milestone[] = [
-  { place: 'Jhansi', title: 'Home city', detail: 'Where it starts.' },
-  { place: 'Jhansi', title: 'Mahatma Hansraj Modern School', detail: 'School, until Class 12.' },
-  { place: 'Jhansi', title: 'MHMUN', stat: '1600+ students', role: 'Creative Director' },
-  { place: 'Jhansi', title: 'Hansraj Hackfest', stat: '130+ students', role: 'President' },
-  { place: 'Gurugram', title: 'Global AI Community — Gurgaon Chapter', detail: 'Team NYMERIA', role: 'Hackathon winner' },
-  { place: 'Gurugram', title: 'Zenith School of AI', detail: 'Studying now.' },
-  { place: 'Online', title: 'UNIOFFICE · ORCADES · Business Simulator · Vinacou', detail: 'Shipped and live.' },
-  { place: 'Now', title: 'Building what’s next', detail: 'Maybe yours.' },
+  { place: 'Jhansi', title: 'Home', detail: 'Where it all starts.' },
+  { place: 'Jhansi', title: 'Mahatma Hansraj Modern School', detail: 'School, all the way to Class 12.' },
+  { place: 'Jhansi', title: 'MHMUN', stat: '1,600+ students in one place', role: 'Creative Director' },
+  { place: 'Jhansi', title: 'Hansraj Hackfest', stat: '130+ students learning to build', role: 'President' },
+  { place: 'Gurugram', title: 'Global AI Community, Gurgaon Chapter', detail: 'A hackathon with team NYMERIA.', role: 'We won.' },
+  { place: 'Gurugram', title: 'Zenith School of AI', detail: 'Where I’m learning now.' },
+  { place: 'Online', title: 'UNIOFFICE · ORCADES · Business Simulator · Vinacou', detail: 'Things I’ve built and put out into the world.' },
+  { place: 'Now', title: 'Still building', detail: 'Maybe the next one is yours.' },
 ]
 
 export type Service = { id: string; title: string; items: string[]; evidence: { label: string; href: string }[] }
 
+// Not a menu of services: the kinds of things I've actually made, each linked to the real thing.
 export const services: Service[] = [
   {
     id: 'products',
-    title: 'Digital products',
-    items: ['Web apps', 'SaaS products', 'Interactive tools', 'Business software'],
+    title: 'Products',
+    items: ['Software you can actually use, from a workspace product to a simulator you can play.'],
     evidence: [
       { label: 'UNIOFFICE', href: '#unioffice' },
       { label: 'Business Simulator', href: '#simulator' },
@@ -142,29 +149,99 @@ export const services: Service[] = [
   },
   {
     id: 'ai',
-    title: 'AI systems',
-    items: ['AI agents', 'AI-powered workflows', 'Research systems', 'Automation'],
-    evidence: [{ label: 'NYMERIA · hackathon win', href: '#nymeria' }],
+    title: 'AI projects',
+    items: ['I’m studying AI and building with it. My team and I won a Global AI Community hackathon.'],
+    evidence: [{ label: 'NYMERIA', href: '#nymeria' }],
   },
   {
     id: 'immersive',
-    title: 'Immersive websites',
-    items: ['GSAP & scroll storytelling', 'Three.js & WebGL', '3D experiences', 'Interactive websites'],
+    title: 'Interactive websites',
+    items: ['3D, motion and stories you scroll through. You’re standing inside one right now.'],
     evidence: [{ label: 'This website', href: '#hello' }],
   },
   {
     id: 'brand',
-    title: 'Brand experiences',
-    items: ['Creative websites', 'Digital identity', 'Interactive brand experiences'],
+    title: 'Creative websites',
+    items: ['Sites with a personality of their own.'],
     evidence: [{ label: 'ORCADES', href: '#orcades' }],
   },
   {
     id: 'business',
     title: 'Business websites',
-    items: ['High-quality websites for companies and products'],
+    items: ['Sites that help a real business reach real customers.'],
     evidence: [{ label: 'Vinacou', href: '#vinacou' }],
   },
 ]
+
+/* ---------- section copy ---------- */
+
+export const copy = {
+  hero: {
+    srTagline: ': I build things, often with other people, and I’m still building.',
+  },
+  about: {
+    title: ['I’m Madhavan', 'Sahu.'],
+    lede: 'I build software, products, AI projects and websites you can wander around in.',
+    ledeEnd: 'Some on my own. Some of the best ones, with other people.',
+    evidence: [
+      {
+        claim: 'I made',
+        items: [
+          { label: 'UNIOFFICE', id: 'unioffice' },
+          { label: 'ORCADES', id: 'orcades' },
+          { label: 'Business Simulator', id: 'simulator' },
+          { label: 'Vinacou', id: 'vinacou' },
+        ],
+      },
+      {
+        claim: 'With people',
+        items: [
+          { label: 'NYMERIA', id: 'nymeria' },
+          { label: 'MHMUN', id: 'mhmun' },
+          { label: 'Hansraj Hackfest', id: 'hackfest' },
+        ],
+      },
+    ],
+    nowLabel: 'Now',
+    schoolLabel: 'School',
+    schoolNote: '(until Class 12)',
+    aside: 'Before all this, I hosted gaming contests. Nothing official, just my first try at bringing people together.',
+  },
+  project: {
+    provesLabel: 'In one line',
+    visit: 'Visit',
+  },
+  simDemo: {
+    head: 'Try a tiny version',
+    note: 'Each block in the district is one week of revenue. This is a toy I made just for this page. The real simulator is one click away.',
+  },
+  nymeria: {
+    kicker: 'With my team',
+    result: 'We won.',
+    partLabel: 'My part',
+    part: 'The technical side',
+    line: 'We built it together. I took care of the technical side.',
+  },
+  mhmun: {
+    kicker: 'With a lot of people',
+    unit: 'students in the room · every figure here is one of them',
+  },
+  hackfest: {
+    kicker: 'With other students',
+    roleLabel: 'my role',
+    line: 'A group of us put it together so more students could learn to build things too.',
+  },
+  journey: {
+    kicker: 'The story so far',
+    title: ['From Jhansi', 'to now.'],
+  },
+  services: {
+    kicker: 'Made so far',
+    title: ['What I', 'make.'],
+    lede: 'All of it real, all of it linked. If one of these looks like what you need, keep scrolling.',
+    proofLabel: 'See it',
+  },
+}
 
 // Chapters drive the navigation index and the camera. Order = scroll order.
 export const chapters = [
@@ -179,7 +256,7 @@ export const chapters = [
   { id: 'mhmun', label: 'MHMUN', group: 'Experience' },
   { id: 'hackfest', label: 'Hansraj Hackfest', group: 'Experience' },
   { id: 'journey', label: 'Journey', group: 'Experience' },
-  { id: 'services', label: 'What I build', group: 'Services' },
+  { id: 'services', label: 'What I make', group: 'What I make' },
   { id: 'contact', label: 'Contact', group: 'Contact' },
 ] as const
 

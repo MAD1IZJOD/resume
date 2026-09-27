@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { getScreenHost } from '../scene/screenHost'
 import { useReveal } from '../lib/useReveal'
-import { person } from '../content'
+import { copy, person } from '../content'
 import { useUI } from '../lib/store'
 
 const roles = ['builder', 'developer', 'designer', 'product builder', 'creative technologist', 'entrepreneur', 'event organiser']
@@ -24,7 +24,7 @@ export function Hero({ webgl }: { webgl: boolean }) {
         <div className="hero-corner hero-tl">
           <h1 id="hero-title" className="hero-title">
             <span className="mono">Madhavan Sahu</span>
-            <span className="sr-only"> — I build things: products, software, AI systems and interactive experiences.</span>
+            <span className="sr-only">{copy.hero.srTagline}</span>
           </h1>
           <p className="mono hero-sub">A digital universe · Est. Jhansi</p>
         </div>

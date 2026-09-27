@@ -2,6 +2,7 @@ import { useEffect, useId, useMemo, useState } from 'react'
 import type { Decisions } from '../lib/sim'
 import { formatINR, industries, simulate } from '../lib/sim'
 import { story } from '../lib/store'
+import { copy } from '../content'
 
 /**
  * A pocket-sized simulation. Every change re-runs 24 weeks of a toy market;
@@ -26,7 +27,7 @@ export function SimDemo() {
   return (
     <div className="sim" data-reveal data-interactive>
       <div className="sim-head">
-        <span className="mono">Try it · a toy market</span>
+        <span className="mono">{copy.simDemo.head}</span>
         <span className="mono sim-weeks">24 weeks</span>
       </div>
 
@@ -93,7 +94,7 @@ export function SimDemo() {
           <dd className={result.profit < 0 ? 'neg' : 'pos'}>{formatINR(result.profit)}</dd>
         </div>
       </dl>
-      <p className="sim-note">Each block in the district is one week of revenue. A toy built for this page — open the real simulator for the real thing.</p>
+      <p className="sim-note">{copy.simDemo.note}</p>
     </div>
   )
 }

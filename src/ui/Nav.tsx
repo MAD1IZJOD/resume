@@ -4,7 +4,7 @@ import { lockScroll, scrollToChapter } from '../lib/scroll'
 import { setUI, story, useUI } from '../lib/store'
 
 const visible = chapters.filter((c) => !('hidden' in c && c.hidden))
-const groups = ['Home', 'About', 'Work', 'Experience', 'Services', 'Contact'] as const
+const groups = ['Home', 'About', 'Work', 'Experience', 'What I make', 'Contact'] as const
 
 /**
  * A small floating control instead of a navbar: where you are, how far
@@ -77,7 +77,7 @@ export function Nav() {
         <a
           className="nav-mark"
           href="#hello"
-          aria-label={`${person.name} — back to the start`}
+          aria-label={`${person.name}, back to the start`}
           onClick={(e) => {
             e.preventDefault()
             go('hello')

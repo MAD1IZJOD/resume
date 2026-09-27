@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { services } from '../content'
+import { copy, services } from '../content'
 import { scrollToChapter } from '../lib/scroll'
 import { useReveal } from '../lib/useReveal'
 import { Lines } from './Projects'
@@ -12,13 +12,13 @@ export function Services() {
       <div className="sticky services-inner">
         <header className="services-head">
           <p className="mono services-kicker" data-reveal>
-            Services
+            {copy.services.kicker}
           </p>
           <h2 id="services-title" className="display services-title">
-            <Lines text={['What can I', 'build for you?']} />
+            <Lines text={copy.services.title} />
           </h2>
           <p className="services-lede" data-reveal>
-            Everything below is backed by something you’ve already scrolled past.
+            {copy.services.lede}
           </p>
         </header>
         <ol className="services-list">
@@ -28,7 +28,7 @@ export function Services() {
               <h3 className="service-title">{s.title}</h3>
               <p className="service-items">{s.items.join(' · ')}</p>
               <p className="service-proof">
-                <span className="mono">Proof</span>
+                <span className="mono">{copy.services.proofLabel}</span>
                 {s.evidence.map((e) => (
                   <a
                     key={e.label}
