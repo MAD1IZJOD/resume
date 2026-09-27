@@ -1,0 +1,306 @@
+/* ---------- stage (fixed WebGL layer) ---------- */
+
+.stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--ink);
+}
+
+.stage > div {
+  position: absolute !important;
+  inset: 0;
+}
+
+.stage-fallback {
+  background:
+    radial-gradient(60% 50% at 70% 30%, rgba(255, 90, 31, 0.14), transparent 70%),
+    radial-gradient(50% 40% at 20% 80%, rgba(215, 255, 74, 0.06), transparent 70%),
+    var(--ink);
+}
+
+/* film grain + vignette on top of the canvas, below the copy */
+.stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+main a,
+main button,
+main input,
+main select,
+main label,
+main [data-interactive] {
+  pointer-events: auto;
+}
+
+.chapter {
+  position: relative;
+  min-height: 100vh;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* ---------- preloader ---------- */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: var(--gutter);
+  background: var(--ink);
+  clip-path: inset(0 0 0 0);
+}
+
+.pl-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.pl-top {
+  color: var(--muted);
+}
+
+.pl-center {
+  align-self: center;
+  justify-content: center;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.pl-label {
+  color: var(--muted);
+}
+
+.pl-num {
+  font-weight: 300;
+  font-size: clamp(64px, 14vw, 200px);
+  letter-spacing: -0.06em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.pl-bar {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.pl-bar > span {
+  position: absolute;
+  inset: 0;
+  background: var(--ember);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.pl-note {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .pl-note {
+    display: none;
+  }
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  height: 100vh;
+  height: 100svh;
+}
+
+.hero-inner {
+  position: absolute;
+  inset: 0;
+  padding: var(--gutter);
+}
+
+.hero-corner {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 1.2s var(--ease-out),
+    transform 1.2s var(--ease-out);
+}
+
+.hero[data-ready='true'] .hero-corner {
+  opacity: 1;
+  transform: none;
+}
+
+.hero[data-ready='true'] .hero-bl {
+  transition-delay: 0.15s;
+}
+
+.hero[data-ready='true'] .hero-br {
+  transition-delay: 0.3s;
+}
+
+.hero-tl {
+  top: var(--gutter);
+  left: var(--gutter);
+}
+
+.hero-bl {
+  bottom: var(--gutter);
+  left: var(--gutter);
+}
+
+.hero-br {
+  bottom: var(--gutter);
+  right: var(--gutter);
+  text-align: right;
+  display: grid;
+  gap: 14px;
+  justify-items: end;
+}
+
+.hero-title {
+  margin: 0;
+  font-weight: inherit;
+}
+
+.hero-sub,
+.hero-dim {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.hero-role {
+  margin: 4px 0 0;
+  font-size: clamp(28px, 3.4vw, 48px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.hero-role .serif {
+  color: var(--muted);
+}
+
+.hero-role-word {
+  display: inline-block;
+  animation: role-in 0.7s var(--ease-out) both;
+}
+
+@keyframes role-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+    filter: blur(6px);
+  }
+}
+
+.hero-link {
+  text-decoration: none;
+  color: var(--bone-dim);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.hero-link:hover {
+  color: var(--ember);
+  border-color: var(--ember);
+}
+
+.hero-scroll {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-scroll-line {
+  position: relative;
+  width: 1px;
+  height: 36px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.hero-scroll-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--ember);
+  animation: scroll-line 2.2s var(--ease-in-out) infinite;
+}
+
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-br .hero-link {
+    display: none;
+  }
+  .hero-bl {
+    bottom: calc(var(--gutter) + 8px);
+  }
+}
+
+/* ---------- portal ---------- */
+
+.portal {
+  height: 170vh;
+}
+
+.portal-inner {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: var(--gutter);
+}
+
+.portal-line {
+  position: absolute;
+  margin: 0;
+  left: 50%;
+  translate: -50% 0;
+  width: min(1100px, calc(100vw - 2 * var(--gutter)));
+}
+
+.portal-a {
+  top: 18vh;
+  color: var(--muted);
+}
+
+.portal-b {
+  bottom: 14vh;
+  font-size: clamp(40px, 7vw, 108px);
+}
+
+.portal-b .serif {
+  color: var(--ember);
+}

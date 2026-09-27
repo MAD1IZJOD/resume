@@ -64,3 +64,5 @@ export function useUI<T>(select: (s: UIState) => T): T {
     () => select(ui),
   )
 }
+
+if (import.meta.env.DEV) (window as unknown as { __story: typeof story }).__story = story
