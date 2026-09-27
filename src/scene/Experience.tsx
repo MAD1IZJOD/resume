@@ -1,7 +1,7 @@
-import { Environment, Lightformer } from '@react-three/drei'
 import { Canvas, useThree } from '@react-three/fiber'
-import { Suspense, useEffect } from 'react'
+import { useEffect } from 'react'
 import * as THREE from 'three'
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
 import type { Tier } from '../lib/env'
 import { CameraRig } from './CameraRig'
 import { Phone } from './Phone'
@@ -30,14 +30,7 @@ export default function Experience({ tier, reduced, onReady }: Props) {
       <directionalLight position={[4, 6, 5]} intensity={1.4} color="#fff1e0" />
       <pointLight position={[-3, -1, 3]} intensity={6} color="#ff5a1f" distance={10} />
 
-      <Suspense fallback={null}>
-        <Environment resolution={128} frames={1}>
-          <Lightformer form="rect" intensity={2.2} color="#fff3e6" position={[0, 4, 4]} scale={[8, 2, 1]} />
-          <Lightformer form="rect" intensity={1.4} color="#ff7a45" position={[-5, 0, 2]} rotation-y={Math.PI / 2} scale={[6, 1, 1]} />
-          <Lightformer form="rect" intensity={0.8} color="#c9d6ff" position={[5, -1, 1]} rotation-y={-Math.PI / 2} scale={[6, 0.6, 1]} />
-          <Lightformer form="ring" intensity={1.2} color="#ffffff" position={[0, 0, -6]} scale={3} />
-        </Environment>
-      </Suspense>
+      <Reflections />
 
       <Phone reduced={reduced} />
       <World tier={tier} />
@@ -64,5 +57,29 @@ function Warmup({ onReady }: { onReady: () => void }) {
       alive = false
     }
   }, [gl, scene, camera, onReady])
+  return null
+}
+
+/** A soft studio environment for metal and glass reflections, generated once (no HDR download). */
+function Reflections() {
+  const get = useThree((s) => s.get)
+  useEffect(() => {
+    const { gl, scene } = get()
+    const pmrem = new THREE.PMREMGenerator(gl)
+    const room = new RoomEnvironment()
+    const env = pmrem.fromScene(room, 0.04).texture
+    scene.environment = env
+    scene.environmentIntensity = 0.7
+    return () => {
+      scene.environment = null
+      env.dispose()
+      pmrem.dispose()
+      room.traverse((o) => {
+        const m = o as THREE.Mesh
+        m.geometry?.dispose()
+        ;(m.material as THREE.Material | undefined)?.dispose?.()
+      })
+    }
+  }, [get])
   return null
 }
