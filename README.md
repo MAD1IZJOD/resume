@@ -1,48 +1,57 @@
-# Madhavan Sahu — A Digital Universe
+# Madhavan Sahu · A Digital Universe
 
-My portfolio, built as an interactive 3D experience rather than a resume page.
+My portfolio. Not a résumé page, more of a place you can walk around in.
 
-It starts in the dark with a single object that assembles into a phone. The phone's screen is real HTML — pick an app or scroll, and the camera dives through the glass into a stylised world where every building is something I've built or done:
+It starts in the dark with a single object that turns into a phone. The phone's screen is real HTML: pick an app or just scroll, and the camera dives through the glass into a small world where every building is something I've made, or something I did with other people.
+
+The story it tries to tell is simple. I build things. I build things with people. I'm still building.
+
+**Things I built**
 
 | Place | What it is |
 | --- | --- |
 | The beacon | About me |
-| A workspace tower | **UNIOFFICE** — my flagship product, live and in testing ([unioffice.pro](https://unioffice.pro)) |
-| A twisting sculpture | **ORCADES** — creative agency ([orcades.vercel.app](https://orcades.vercel.app)) |
-| A district of blocks | **Business Simulator** — the blocks *are* a live revenue chart you can play with ([live](https://business-simulator-eight.vercel.app/)) |
-| An acoustic showroom | **Vinacou** — website for an acoustic-interiors firm, with a clap demo ([live](https://vinayakoo.vercel.app/)) |
-| An arena | **NYMERIA** — Global AI Community Gurgaon Chapter hackathon, winner |
-| An auditorium of 1,600 figures | **MHMUN** — Creative Director, 1600+ students |
-| Three track pods | **Hansraj Hackfest** — President, 130+ students |
+| A workspace tower | **UNIOFFICE**, my biggest project. Live and in testing ([unioffice.pro](https://unioffice.pro)) |
+| A twisting sculpture | **ORCADES**, a creative agency project ([orcades.vercel.app](https://orcades.vercel.app)) |
+| A district of blocks | **Business Simulator**. The blocks are a tiny toy market you can play with; the real simulator is [here](https://business-simulator-eight.vercel.app/) |
+| An acoustic showroom | **Vinacou**, a website for a firm that sells acoustic interiors, plus a clap demo ([live](https://vinayakoo.vercel.app/)) |
 
-Then the world turns into a timeline (Jhansi → now), shows what I can build for you, and collapses back into the object it came from.
+**Things I did with people**
+
+| Place | What it is |
+| --- | --- |
+| An arena | **NYMERIA**. My team won a Global AI Community Gurgaon Chapter hackathon; I took care of the technical side |
+| An auditorium of 1,600 figures | **MHMUN**. I was Creative Director for an event with 1,600+ students |
+| Three track pods | **Hansraj Hackfest**. I was President; 130+ students learned cloud, web and design |
+
+After that, the world turns into a timeline (Jhansi to now), shows the kinds of things I make, and folds back into the object it started from.
 
 ## Stack
 
 - **React 19 + TypeScript + Vite**
-- **Three.js / React Three Fiber / drei** — the whole world is procedural: no model downloads
-- **GSAP + ScrollTrigger** for reveals, **Lenis** for smooth scroll
-- Three's **CSS3DRenderer** projects the phone's DOM screen onto the 3D glass
+- **Three.js and React Three Fiber**. The whole world is generated in code, so there are no model downloads
+- **GSAP + ScrollTrigger** for reveals, **Lenis** for smooth scrolling
+- Three's **CSS3DRenderer** puts the phone's HTML screen onto the 3D glass
 - **WebAudio** for the synthesised clap in the Vinacou chapter
 
 ## How it fits together
 
-- `src/content.ts` — every fact on the site, in one place (tests keep the links and numbers exact)
-- `src/lib/scroll.ts` — turns scroll position into chapter-space time `story.t`
-- `src/scene/shots.ts` — camera keyframes per chapter; `CameraRig` samples them every frame
-- `src/scene/world/*` — the city and each landmark
-- `src/sections/*` — the accessible DOM layer that sits over the canvas
+- `src/content.ts`: every fact and every line of copy, in one place (tests keep the links and numbers exact)
+- `src/lib/scroll.ts`: turns the scroll position into chapter time, `story.t`
+- `src/scene/shots.ts`: camera keyframes for each chapter, sampled every frame by `CameraRig`
+- `src/scene/world/*`: the city and each landmark
+- `src/sections/*`: the accessible HTML layer that sits over the canvas
 
-Scroll data never goes through React state; the scene reads a plain mutable `story` object each frame.
+Scroll data never goes through React state. The scene reads a plain `story` object every frame.
 
 ## Performance and accessibility
 
-- The 3D scene is code-split and loaded lazily; all shaders are precompiled while the preloader shows
+- The 3D scene is loaded lazily, and every shader is compiled while the loading screen is up
 - Instanced meshes for the city, the 1,600 audience figures and the 130 hackathon participants
-- Pixel ratio capped per device tier; a lighter city on phones and low-power devices
+- Pixel ratio capped per device, with a lighter city on phones and low-power devices
 - Respects `prefers-reduced-motion` (no smooth scrolling, no intro, camera cuts instead of flights)
-- Works without WebGL (a CSS phone, same content)
-- Every chapter is semantic HTML with headings, keyboard-reachable controls, a skip link and a full chapter index
+- Still works without WebGL (a CSS phone, same content)
+- Every chapter is semantic HTML with real headings, keyboard-reachable controls, a skip link and a full chapter index
 
 ## Scripts
 
@@ -56,6 +65,6 @@ npm run typecheck
 npm test
 ```
 
-## Contact
+## Say hi
 
 [madhavansahu@gmail.com](mailto:madhavansahu@gmail.com) · [LinkedIn](https://www.linkedin.com/in/madhavan-sahu-9a5097302/) · [GitHub](https://github.com/MAD1IZJOD)
