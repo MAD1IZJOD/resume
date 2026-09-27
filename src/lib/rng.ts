@@ -1,4 +1,4 @@
-/** Small deterministic PRNG (LCG) — procedural scenes look the same on every visit. */
+/** Small deterministic PRNG (LCG): procedural scenes look the same on every visit. */
 export function rng(seed: number) {
   let s = seed >>> 0
   return () => {

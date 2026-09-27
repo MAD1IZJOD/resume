@@ -1,4 +1,4 @@
-// A clap in a room, synthesised with WebAudio — no audio files. The "room" is a
+// A clap in a room, synthesised with WebAudio: no audio files. The "room" is a
 // generated impulse response: a long tail for a bare room, a short one for a
 // room with acoustic treatment. Only ever started by an explicit click.
 

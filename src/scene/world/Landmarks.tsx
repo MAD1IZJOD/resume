@@ -26,7 +26,7 @@ export function Glow({ color, size, opacity = 0.6, position }: { color: string; 
 }
 
 /* ------------------------------------------------------------------ */
-/* ABOUT — the beacon: a single slender tower with a light that never goes out */
+/* ABOUT: the beacon: a single slender tower with a light that never goes out */
 
 export function Beacon() {
   const light = useRef<THREE.Mesh>(null)
@@ -58,7 +58,7 @@ export function Beacon() {
 }
 
 /* ------------------------------------------------------------------ */
-/* UNIOFFICE — a workspace tower. Floors light up; OS-like panels orbit the crown. */
+/* UNIOFFICE: a workspace tower. Floors light up; OS-like panels orbit the crown. */
 
 export function UniofficeTower() {
   const winTexs = useMemo(() => [11, 12, 13].map((seed) => windowsTexture(14, 3, 0.55, seed, '#f4ffd0')), [])
@@ -78,7 +78,7 @@ export function UniofficeTower() {
         <boxGeometry args={[9, 0.8, 9]} />
         <meshStandardMaterial color="#161512" roughness={0.6} metalness={0.4} />
       </mesh>
-      {/* floors — slight setbacks as it rises */}
+      {/* floors: slight setbacks as it rises */}
       {Array.from({ length: floors }, (_, i) => {
         const w = 5.6 - i * 0.12
         return (
@@ -132,7 +132,7 @@ export function UniofficeTower() {
 }
 
 /* ------------------------------------------------------------------ */
-/* ORCADES — a creative studio as a sculpture: a twisting stack of slabs */
+/* ORCADES: a creative studio as a sculpture: a twisting stack of slabs */
 
 export function OrcadesSculpture() {
   const stack = useRef<THREE.Group>(null)
@@ -183,7 +183,7 @@ export function OrcadesSculpture() {
 }
 
 /* ------------------------------------------------------------------ */
-/* BUSINESS SIMULATOR — the district *is* the chart: weekly revenue drives block height */
+/* BUSINESS SIMULATOR: the district *is* the chart: weekly revenue drives block height */
 
 export function SimDistrict() {
   const mesh = useRef<THREE.InstancedMesh>(null)
@@ -235,7 +235,7 @@ export function SimDistrict() {
 }
 
 /* ------------------------------------------------------------------ */
-/* VINACOU — an acoustic showroom: slatted walls absorb sound waves */
+/* VINACOU: an acoustic showroom: slatted walls absorb sound waves */
 
 export function VinacouShowroom() {
   const slats = useRef<THREE.InstancedMesh>(null)
@@ -268,7 +268,7 @@ export function VinacouShowroom() {
       const f = (time * (0.25 + story.pulse * 0.5) + i / g.children.length) % 1
       ch.scale.setScalar(0.3 + f * 6.5)
       const mat = (ch as THREE.Mesh).material as THREE.MeshBasicMaterial
-      // waves fade out as they reach the slatted walls — absorbed, not reflected
+      // waves fade out as they reach the slatted walls: absorbed, not reflected
       mat.opacity = (1 - f) * (1 - f) * (0.45 + story.pulse * 0.5)
     })
   })

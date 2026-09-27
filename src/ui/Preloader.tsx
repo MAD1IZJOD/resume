@@ -4,7 +4,7 @@ import { gsap } from '../lib/scroll'
 type Props = { ready: boolean; skip: boolean; onDone: () => void }
 
 /**
- * "INITIALIZING…" — counts up while fonts load and the WebGL scene boots.
+ * "INITIALIZING…": counts up while fonts load and the WebGL scene boots.
  * The last 30% is only released once the scene has rendered a frame.
  */
 export function Preloader({ ready, skip, onDone }: Props) {

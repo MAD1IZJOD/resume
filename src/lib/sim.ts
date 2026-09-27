@@ -42,7 +42,7 @@ export function simulate(d: Decisions): SimResult {
   let awareness = 0
   const weeks: SimResult['weeks'] = []
   for (let w = 0; w < WEEKS; w++) {
-    // marketing builds awareness that decays over time — diminishing returns
+    // marketing builds awareness that decays over time: diminishing returns
     awareness = awareness * 0.82 + (1 - Math.exp(-d.marketing / 30000)) * 0.35
     const season = 1 + 0.18 * Math.sin((w / WEEKS) * Math.PI * 2 - 0.6)
     const growth = 1 + w * 0.012

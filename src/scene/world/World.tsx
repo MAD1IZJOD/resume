@@ -15,7 +15,7 @@ const contactIndex = chapters.findIndex((c) => c.id === 'contact')
 
 /**
  * The digital universe behind the phone. At the very end it collapses back
- * into a single point at the origin — where the story started.
+ * into a single point at the origin: where the story started.
  */
 export function World({ tier }: { tier: Tier }) {
   const root = useRef<THREE.Group>(null)
@@ -23,7 +23,7 @@ export function World({ tier }: { tier: Tier }) {
     const g = root.current
     if (!g) return
     const t = story.t
-    // NB: never toggle `visible` here — hiding lights changes the light count
+    // NB: never toggle `visible` here: hiding lights changes the light count
     // and forces three.js to recompile every material mid-scroll.
     // collapse during the first half of the contact chapter
     const c = Math.min(1, Math.max(0, (t - contactIndex) / 0.3))

@@ -2,7 +2,7 @@ import { useSyncExternalStore } from 'react'
 
 /**
  * `story` is a plain mutable object read every frame by the 3D scene.
- * It is intentionally *not* React state — scroll and pointer data change
+ * It is intentionally *not* React state: scroll and pointer data change
  * 60+ times a second and must never trigger re-renders.
  */
 export const story = {

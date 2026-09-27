@@ -8,7 +8,7 @@ import { places } from '../shots'
 import type { V3 } from '../shots'
 import { Glow } from './Landmarks'
 
-// Chronological stops — must match `timeline` in content.ts (8 entries).
+// Chronological stops: must match `timeline` in content.ts (8 entries).
 const stops: V3[] = [
   places.jhansi,
   places.school,
@@ -83,7 +83,7 @@ function JhansiTown() {
           <meshStandardMaterial color="#2a211a" emissive="#ff9a5a" emissiveIntensity={i % 4 === 0 ? 0.25 : 0.05} roughness={0.8} />
         </mesh>
       ))}
-      {/* a fort silhouette on a hill — Jhansi */}
+      {/* a fort silhouette on a hill: Jhansi */}
       <mesh position={[-3, 0.8, -4]}>
         <cylinderGeometry args={[3.2, 4.2, 1.6, 7]} />
         <meshStandardMaterial color="#1d1813" roughness={0.9} />

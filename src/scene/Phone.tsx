@@ -169,7 +169,7 @@ export function Phone({ reduced }: { reduced: boolean }) {
       </group>
 
       <group ref={root} scale={0.15}>
-        {/* back plate — brushed dark titanium */}
+        {/* back plate: brushed dark titanium */}
         <group ref={back}>
           <mesh geometry={backGeo}>
             <meshStandardMaterial color="#6d655c" metalness={0.95} roughness={0.28} envMapIntensity={1.4} />
@@ -186,7 +186,7 @@ export function Phone({ reduced }: { reduced: boolean }) {
           </mesh>
         </group>
 
-        {/* inner core — visible when the device is exploded */}
+        {/* inner core: visible when the device is exploded */}
         <mesh ref={core}>
           <boxGeometry args={[W - 0.12, H - 0.12, 0.02]} />
           <meshStandardMaterial map={circuit} emissiveMap={circuit} emissive="#ffffff" emissiveIntensity={0.6} metalness={0.2} roughness={0.8} />

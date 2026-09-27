@@ -86,7 +86,7 @@ export function windowsTexture(cols: number, rows: number, lit: number, seed: nu
   return t
 }
 
-/** A thin slab with rounded corners (like a device body) — RoundedBox can't do big radii on thin depth. */
+/** A thin slab with rounded corners (like a device body): RoundedBox can't do big radii on thin depth. */
 export function roundedSlab(w: number, h: number, depth: number, r: number, bevel = 0.012) {
   const s = new THREE.Shape()
   const x = -w / 2 + bevel
