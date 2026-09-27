@@ -10,6 +10,7 @@ import { Journey } from './sections/Journey'
 import { Services } from './sections/Services'
 import { Contact } from './sections/Contact'
 import { ProjectChapter } from './sections/Projects'
+import { RoomDemo } from './sections/RoomDemo'
 import { SimDemo } from './sections/SimDemo'
 import { Cursor } from './ui/Cursor'
 import { Nav } from './ui/Nav'
@@ -103,7 +104,9 @@ export default function App() {
         <ProjectChapter project={projectById.simulator} align="right" tall>
           <SimDemo />
         </ProjectChapter>
-        <ProjectChapter project={projectById.vinacou} align="left" />
+        <ProjectChapter project={projectById.vinacou} align="left">
+          <RoomDemo />
+        </ProjectChapter>
         <Nymeria />
         <Mhmun />
         <Hackfest />

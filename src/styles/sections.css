@@ -1213,3 +1213,98 @@
     padding-top: calc(var(--gutter) + 64px);
   }
 }
+
+/* ---------- Vinacou room demo ---------- */
+
+.room {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(30, 24, 18, 0.55);
+}
+
+.room-head {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--accent);
+}
+
+.room-wave {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  height: 14px;
+}
+
+.room-wave i {
+  width: 2px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+.room-wave[data-on='true'] i {
+  animation: wave 0.9s ease-in-out infinite;
+}
+
+.room-wave i:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.room-wave i:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.room-wave i:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes wave {
+  50% {
+    height: 14px;
+  }
+}
+
+.room-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.room-btns button {
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+
+.room-btns button:hover {
+  border-color: var(--accent);
+}
+
+.room-btns button[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.room-note {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+@media (max-width: 820px), (max-aspect-ratio: 9/10) {
+  .project--vinacou .project-proves,
+  .room-note {
+    display: none;
+  }
+}
