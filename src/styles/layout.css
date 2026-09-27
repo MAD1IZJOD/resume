@@ -304,3 +304,14 @@ main [data-interactive] {
 .portal-b .serif {
   color: var(--ember);
 }
+
+@media (max-width: 700px) {
+  .hero-role {
+    font-size: 26px;
+    max-width: 62vw;
+  }
+  .hero-scroll {
+    font-size: 0;
+    gap: 0;
+  }
+}

@@ -27,6 +27,7 @@ export default function App() {
   const env = useMemo(() => ({ tier: detectTier(), reduced: prefersReducedMotion(), webgl: hasWebGL() }), [])
   const [sceneReady, setSceneReady] = useState(!env.webgl)
   const [deepLink] = useState(deepLinkTarget)
+  const onSceneReady = useCallback(() => setSceneReady(true), [])
 
   // never let a stalled GPU / background tab trap the visitor on the preloader
   useEffect(() => {
@@ -81,7 +82,7 @@ export default function App() {
       <div className="stage" aria-hidden>
         {env.webgl ? (
           <Suspense fallback={null}>
-            <Experience tier={env.tier} reduced={env.reduced} onReady={() => setSceneReady(true)} />
+            <Experience tier={env.tier} reduced={env.reduced} onReady={onSceneReady} />
           </Suspense>
         ) : (
           <div className="stage-fallback" />
