@@ -157,7 +157,6 @@ export function Phone({ reduced }: { reduced: boolean }) {
         <meshBasicMaterial map={haloTex} color="#ff5a1f" transparent opacity={0.3} depthWrite={false} blending={THREE.AdditiveBlending} toneMapped={false} fog={false} />
       </mesh>
       <spotLight position={[-4, 5, -3]} angle={0.6} penumbra={1} intensity={60} color="#ffe6cf" distance={14} />
-      <spotLight position={[4, -3, -2]} angle={0.7} penumbra={1} intensity={40} color="#ff6a2e" distance={12} />
       <group ref={shard}>
         <mesh>
           <icosahedronGeometry args={[0.8, 0]} />

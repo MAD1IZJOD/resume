@@ -22,7 +22,6 @@ const tmpV = new THREE.Vector3()
 function Pod({ i, children }: { i: number; children: ReactNode }) {
   const ref = useRef<THREE.Group>(null)
   const ring = useRef<THREE.MeshBasicMaterial>(null)
-  const light = useRef<THREE.PointLight>(null)
   useFrame((_, dt) => {
     const on = story.track === i ? 1 : 0
     const k = 1 - Math.exp(-dt * 4)
@@ -31,7 +30,6 @@ function Pod({ i, children }: { i: number; children: ReactNode }) {
     const s = g.scale.x + ((on ? 1.12 : 0.92) - g.scale.x) * k
     g.scale.setScalar(s)
     if (ring.current) ring.current.opacity += ((on ? 0.9 : 0.25) - ring.current.opacity) * k
-    if (light.current) light.current.intensity += ((on ? 40 : 6) - light.current.intensity) * k
   })
   return (
     <group position={PODS[i]}>
@@ -44,7 +42,6 @@ function Pod({ i, children }: { i: number; children: ReactNode }) {
         <meshBasicMaterial ref={ring} color={TRACK_COLORS[i]} transparent opacity={0.3} toneMapped={false} />
       </mesh>
       <group ref={ref}>{children}</group>
-      <pointLight ref={light} position={[0, 3, 1.5]} color={TRACK_COLORS[i]} intensity={6} distance={10} />
     </group>
   )
 }

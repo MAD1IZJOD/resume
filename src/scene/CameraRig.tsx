@@ -35,7 +35,13 @@ export function CameraRig({ reduced }: { reduced: boolean }) {
     const introPush = (1 - intro) * 4
 
     const k = reduced ? 1 : 1 - Math.exp(-d * 5.5)
-    pos.current.lerp(tmpLook.set(pose.pos[0], pose.pos[1], pose.pos[2] + introPush), k)
+    const mz = portrait ? pose.mz : 1
+    tmpLook.set(
+      pose.look[0] + (pose.pos[0] - pose.look[0]) * mz,
+      pose.look[1] + (pose.pos[1] - pose.look[1]) * mz,
+      pose.look[2] + (pose.pos[2] - pose.look[2]) * mz + introPush,
+    )
+    pos.current.lerp(tmpLook, k)
     look.current.lerp(tmpLook.set(pose.look[0], pose.look[1], pose.look[2]), k)
 
     // Gentle pointer parallax (desktop only, not with reduced motion).

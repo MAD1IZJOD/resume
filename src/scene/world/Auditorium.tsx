@@ -129,7 +129,6 @@ export function Auditorium() {
       </mesh>
       <Glow color="#ff5a1f" size={16} position={[0, 4.6, -4.8]} opacity={0.25} />
       <spotLight position={[0, 14, 10]} angle={0.8} penumbra={0.8} color="#ffe4cc" intensity={400} distance={40} />
-      <pointLight position={[0, 5, -1]} color="#ff6a2e" intensity={40} distance={20} />
     </group>
   )
 }

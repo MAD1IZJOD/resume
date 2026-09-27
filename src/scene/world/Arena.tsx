@@ -159,7 +159,6 @@ export function Arena() {
       </points>
 
       <spotLight position={[0, 12, 6]} angle={0.45} penumbra={0.6} color="#fff1cf" intensity={260} distance={30} />
-      <pointLight position={[3, 3, 3]} color="#ffd27a" intensity={30} distance={14} />
     </group>
   )
 }

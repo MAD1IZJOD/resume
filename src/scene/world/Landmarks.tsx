@@ -178,7 +178,6 @@ export function OrcadesSculpture() {
       </mesh>
       <Glow color="#ff5fd2" size={9} position={[0, 13, 0]} opacity={0.35} />
       <pointLight position={[-4, 6, 4]} color="#ff5fd2" intensity={50} distance={24} />
-      <pointLight position={[4, 3, -2]} color="#7a5cff" intensity={40} distance={20} />
     </group>
   )
 }
@@ -303,7 +302,6 @@ export function VinacouShowroom() {
         <sphereGeometry args={[0.18, 24, 24]} />
         <meshBasicMaterial color="#f3c58d" toneMapped={false} />
       </mesh>
-      <pointLight position={[1, 4, 3]} color="#ffd6a3" intensity={45} distance={18} />
       <spotLight position={[-2, 7, 4]} angle={0.7} penumbra={0.8} color="#ffe6c4" intensity={120} distance={20} />
     </group>
   )

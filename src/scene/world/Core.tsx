@@ -24,8 +24,11 @@ export function Core() {
     if (!grp) return
     const l = localT(story.t, 'contact')
     const appear = Math.min(1, Math.max(0, (l - 0.16) / 0.16))
-    grp.visible = appear > 0.001
-    if (!grp.visible) return
+    // scale instead of `visible` so the shader is compiled with everything else
+    if (appear <= 0.001) {
+      grp.scale.setScalar(0.0001)
+      return
+    }
     const e = 1 - Math.pow(1 - appear, 3)
     spin.current += dt * (0.4 + story.pulse * 2.5)
     // make room for the call to action: drift up and shrink a little
@@ -37,7 +40,7 @@ export function Core() {
     if (outerRef.current) outerRef.current.rotation.set(-spin.current * 0.3, -spin.current * 0.5, 0)
   })
   return (
-    <group ref={g} position={[0, 0.2, 0]} visible={false}>
+    <group ref={g} position={[0, 0.2, 0]} scale={0.0001}>
       <mesh>
         <icosahedronGeometry args={[0.85, 0]} />
         <meshStandardMaterial color="#1a1612" metalness={1} roughness={0.25} flatShading />
@@ -49,7 +52,6 @@ export function Core() {
         <lineBasicMaterial color="#efe9dd" transparent opacity={0.12} toneMapped={false} />
       </lineSegments>
       <Glow color="#ff5a1f" size={7} position={[0, 0, -0.5]} opacity={0.55} />
-      <pointLight color="#ff6a2e" intensity={12} distance={8} />
     </group>
   )
 }

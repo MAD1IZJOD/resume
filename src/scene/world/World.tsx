@@ -23,14 +23,14 @@ export function World({ tier }: { tier: Tier }) {
     const g = root.current
     if (!g) return
     const t = story.t
-    g.visible = t > 0.9
+    // NB: never toggle `visible` here — hiding lights changes the light count
+    // and forces three.js to recompile every material mid-scroll.
     // collapse during the first half of the contact chapter
     const c = Math.min(1, Math.max(0, (t - contactIndex) / 0.3))
     const e = c * c * (3 - 2 * c)
     const s = Math.max(0.0001, 1 - e)
     g.scale.setScalar(s)
     g.position.y = e * 2
-    if (s < 0.002) g.visible = false
   })
   return (
     <group ref={root}>

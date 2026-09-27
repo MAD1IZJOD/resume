@@ -10,8 +10,9 @@ export type V3 = [number, number, number]
  *         leaving room for the DOM copy on the other side
  *  up   – on portrait screens, how far the subject is lifted (fraction of height)
  *  fog  – [near, far]
+ *  mz   – on portrait screens, scale the camera's distance to its target
  */
-export type Key = { at: number; pos: V3; look: V3; side?: number; up?: number; fog?: [number, number] }
+export type Key = { at: number; pos: V3; look: V3; side?: number; up?: number; fog?: [number, number]; mz?: number }
 
 // World layout (ground plane at y = -3). The phone sits at the origin and the
 // world stretches away down -z, so diving *through* the phone leads into it.
@@ -44,9 +45,9 @@ function journeyKeys(): Key[] {
 }
 
 export const shots: Record<ChapterId, Key[]> = {
-  hello: [{ at: 0, pos: [0, 0, 7.4], look: [0, 0, 0], side: 0, up: 0.04, fog: [14, 40] }],
+  hello: [{ at: 0, pos: [0, 0, 7.4], look: [0, 0, 0], side: 0, up: 0.04, fog: [14, 40], mz: 0.66 }],
   portal: [
-    { at: 0.05, pos: [0, 0, 5.2], look: [0, 0, 0], side: 0, up: 0, fog: [14, 40] },
+    { at: 0.05, pos: [0, 0, 5.2], look: [0, 0, 0], side: 0, up: 0, fog: [14, 40], mz: 0.8 },
     { at: 0.55, pos: [0, 0, 0.42], look: [0, 0, -1], side: 0, up: 0, fog: [6, 34] },
     { at: 0.62, pos: [0, 0, -0.4], look: [0, -0.6, -30], side: 0, up: 0, fog: [4, 30] },
   ],
@@ -107,7 +108,7 @@ export const timelineKeys: GlobalKey[] = chapters
 const smooth = (x: number) => x * x * (3 - 2 * x)
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 
-export type Pose = { pos: V3; look: V3; side: number; up: number; fog: [number, number] }
+export type Pose = { pos: V3; look: V3; side: number; up: number; fog: [number, number]; mz: number }
 
 export function sampleCamera(t: number, snap = false): Pose {
   const keys = timelineKeys
@@ -126,5 +127,6 @@ export function sampleCamera(t: number, snap = false): Pose {
     side: lerp(a.side ?? 0, b.side ?? 0, f),
     up: lerp(a.up ?? 0.15, b.up ?? 0.15, f),
     fog: [lerp(fa[0], fb[0], f), lerp(fa[1], fb[1], f)],
+    mz: lerp(a.mz ?? 1, b.mz ?? 1, f),
   }
 }

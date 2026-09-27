@@ -1,6 +1,6 @@
 import { Environment, Lightformer } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import { Suspense } from 'react'
+import { Canvas, useThree } from '@react-three/fiber'
+import { Suspense, useEffect } from 'react'
 import * as THREE from 'three'
 import type { Tier } from '../lib/env'
 import { CameraRig } from './CameraRig'
@@ -22,7 +22,6 @@ export default function Experience({ tier, reduced, onReady }: Props) {
         gl.toneMappingExposure = 1.05
         scene.background = new THREE.Color('#0b0a09')
         scene.fog = new THREE.Fog('#0b0a09', 14, 40)
-        requestAnimationFrame(() => onReady())
       }}
       aria-hidden
     >
@@ -43,6 +42,27 @@ export default function Experience({ tier, reduced, onReady }: Props) {
       <Phone reduced={reduced} />
       <World tier={tier} />
       <Core />
+      <Warmup onReady={onReady} />
     </Canvas>
   )
+}
+
+/**
+ * Compile every shader up front (while the preloader is still showing) so the
+ * first flight into a new part of the world doesn't hitch on shader compiles.
+ */
+function Warmup({ onReady }: { onReady: () => void }) {
+  const gl = useThree((s) => s.gl)
+  const scene = useThree((s) => s.scene)
+  const camera = useThree((s) => s.camera)
+  useEffect(() => {
+    let alive = true
+    gl.compileAsync(scene, camera)
+      .catch(() => undefined)
+      .then(() => requestAnimationFrame(() => alive && onReady()))
+    return () => {
+      alive = false
+    }
+  }, [gl, scene, camera, onReady])
+  return null
 }
