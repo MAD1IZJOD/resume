@@ -4,6 +4,7 @@ import { detectTier, hasWebGL, prefersReducedMotion } from './lib/env'
 import { enableHashSync, gsap, initScroll, lockScroll, scrollToChapter, ScrollTrigger } from './lib/scroll'
 import { setUI, story } from './lib/store'
 import { About } from './sections/About'
+import { Nymeria } from './sections/Events'
 import { Hero, Portal } from './sections/Hero'
 import { ProjectChapter } from './sections/Projects'
 import { SimDemo } from './sections/SimDemo'
@@ -95,7 +96,8 @@ export default function App() {
           <SimDemo />
         </ProjectChapter>
         <ProjectChapter project={projectById.vinacou} align="left" />
-        {chapters.slice(7).map((c) => (
+        <Nymeria />
+        {chapters.slice(8).map((c) => (
           <section key={c.id} id={c.id} data-chapter={c.id} className="chapter" style={{ minHeight: '200vh' }}>
             <div className="sticky" style={{ padding: 'var(--gutter)' }}>
               <p className="mono">{c.group}</p>

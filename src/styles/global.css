@@ -232,3 +232,8 @@ canvas {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* headings receive programmatic focus after in-page navigation — no ring needed */
+[tabindex='-1']:focus {
+  outline: none;
+}

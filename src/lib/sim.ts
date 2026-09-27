@@ -1,3 +1,4 @@
+import { rng } from './rng'
 // A deliberately tiny business model, built only for this page to show the
 // *idea* of a simulator: decisions → market → sales → revenue. It is not the
 // model used by the real Business Simulator.
@@ -32,13 +33,6 @@ export type SimResult = {
 
 export const WEEKS = 24
 
-function rng(seed: number) {
-  let s = seed >>> 0
-  return () => {
-    s = (s * 1664525 + 1013904223) >>> 0
-    return s / 4294967296
-  }
-}
 
 export function simulate(d: Decisions): SimResult {
   const ind = industries.find((i) => i.id === d.industry) ?? industries[0]

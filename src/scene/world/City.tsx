@@ -4,14 +4,8 @@ import * as THREE from 'three'
 import type { Tier } from '../../lib/env'
 import { places } from '../shots'
 import { windowsTexture } from '../textures'
+import { rng } from '../../lib/rng'
 
-function rng(seed: number) {
-  let s = seed >>> 0
-  return () => {
-    s = (s * 1664525 + 1013904223) >>> 0
-    return s / 4294967296
-  }
-}
 
 /** Ground grid that fades with distance (fog does the rest). */
 function gridTexture() {

@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { rng } from '../lib/rng'
 
 function canvas(w: number, h: number) {
   const c = document.createElement('canvas')
@@ -7,13 +8,6 @@ function canvas(w: number, h: number) {
   return [c, c.getContext('2d')!] as const
 }
 
-function rng(seed: number) {
-  let s = seed >>> 0
-  return () => {
-    s = (s * 1664525 + 1013904223) >>> 0
-    return s / 4294967296
-  }
-}
 
 /** Glowing circuit traces for the phone's inner core layer. */
 export function circuitTexture() {
