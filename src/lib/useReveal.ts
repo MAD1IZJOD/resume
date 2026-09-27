@@ -18,10 +18,11 @@ export function useReveal(ref: RefObject<HTMLElement | null>, opts: { start?: st
     if (prefersReducedMotion()) return
     const ctx = gsap.context(() => {
       gsap.set(lines, { yPercent: 110 })
-      gsap.set(items, { autoAlpha: 0, y: 24 })
+      // opacity only (not autoAlpha/visibility): hidden items must stay focusable
+      gsap.set(items, { opacity: 0, y: 24 })
       const tl = gsap.timeline({ paused: true })
       tl.to(lines, { yPercent: 0, duration: 1.1, ease: 'expo.out', stagger: 0.08 }, 0)
-      tl.to(items, { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.06 }, 0.15)
+      tl.to(items, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.06 }, 0.15)
       ScrollTrigger.create({
         trigger: el,
         start,
@@ -31,6 +32,10 @@ export function useReveal(ref: RefObject<HTMLElement | null>, opts: { start?: st
         onLeave: () => tl.timeScale(2).reverse(),
         onLeaveBack: () => tl.timeScale(2).reverse(),
       })
+      // keyboard users: reveal as soon as focus lands anywhere inside
+      const onFocus = () => tl.timeScale(1).play()
+      el.addEventListener('focusin', onFocus)
+      return () => el.removeEventListener('focusin', onFocus)
     }, el)
     return () => ctx.revert()
   }, [ref, start, end])
