@@ -5,6 +5,7 @@ import { chapters } from '../../content'
 import type { Tier } from '../../lib/env'
 import { story } from '../../lib/store'
 import { Arena } from './Arena'
+import { Auditorium } from './Auditorium'
 import { City } from './City'
 import { Beacon, OrcadesSculpture, SimDistrict, UniofficeTower, VinacouShowroom } from './Landmarks'
 
@@ -39,6 +40,7 @@ export function World({ tier }: { tier: Tier }) {
       <SimDistrict />
       <VinacouShowroom />
       <Arena />
+      <Auditorium />
     </group>
   )
 }

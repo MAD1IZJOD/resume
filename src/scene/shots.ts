@@ -66,7 +66,8 @@ export const shots: Record<ChapterId, Key[]> = {
   mhmun: [
     { at: 0, pos: [0, -1.4, -197], look: [0, -1.2, -203], side: 0, up: 0.1, fog: [4, 30] },
     { at: 0.15, pos: [0, -1.2, -196], look: [0, -1.1, -203], side: 0, up: 0.1, fog: [4, 34] },
-    { at: 0.7, pos: [0, 30, -176], look: [0, -3, -206], side: 0, up: 0.12, fog: [30, 120] },
+    { at: 0.48, pos: [0, 30, -176], look: [0, -3, -206], side: 0, up: 0.12, fog: [30, 120] },
+    { at: 0.72, pos: [0, 32, -174], look: [0, -3, -206], side: 0, up: 0.12, fog: [30, 120] },
   ],
   hackfest: [
     { at: 0, pos: [0, 8, -231], look: [0, -1, P.hackfest[2]], side: 0, up: 0.14, fog: [18, 80] },
