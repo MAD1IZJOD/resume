@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import './styles/global.css'
 import './styles/layout.css'
 import './styles/phone.css'
+import './styles/sections.css'
 import App from './App'
 
 // No StrictMode: drei's <Html> manages its own React root and its double

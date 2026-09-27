@@ -3,7 +3,9 @@ import { chapters } from './content'
 import { detectTier, hasWebGL, prefersReducedMotion } from './lib/env'
 import { enableHashSync, gsap, initScroll, lockScroll, scrollToChapter, ScrollTrigger } from './lib/scroll'
 import { setUI, story } from './lib/store'
+import { About } from './sections/About'
 import { Hero, Portal } from './sections/Hero'
+import { ProjectChapter, projectById } from './sections/Projects'
 import { PhoneScreenPortal } from './ui/PhoneScreen'
 import { Preloader } from './ui/Preloader'
 
@@ -85,7 +87,12 @@ export default function App() {
       <main id="main">
         <Hero />
         <Portal />
-        {chapters.slice(2).map((c) => (
+        <About />
+        <ProjectChapter project={projectById.unioffice} align="right" />
+        <ProjectChapter project={projectById.orcades} align="left" />
+        <ProjectChapter project={projectById.simulator} align="right" tall />
+        <ProjectChapter project={projectById.vinacou} align="left" />
+        {chapters.slice(7).map((c) => (
           <section key={c.id} id={c.id} data-chapter={c.id} className="chapter" style={{ minHeight: '200vh' }}>
             <div className="sticky" style={{ padding: 'var(--gutter)' }}>
               <p className="mono">{c.group}</p>
