@@ -802,3 +802,133 @@
   line-height: 0.95;
   color: var(--accent);
 }
+
+/* ---------- Journey ---------- */
+
+.journey {
+  min-height: 560vh;
+}
+
+.journey-inner {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.journey-head {
+  padding: calc(var(--gutter) + 48px) var(--gutter) 0;
+}
+
+.journey-kicker {
+  margin: 0 0 14px;
+  color: var(--ember);
+}
+
+.journey-title {
+  font-size: clamp(48px, 7vw, 112px);
+}
+
+.journey-rail {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: calc(var(--gutter) + 8px);
+  height: 1px;
+  background: var(--line);
+}
+
+.journey-rail span {
+  position: absolute;
+  inset: 0;
+  background: var(--ember);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.journey-viewport {
+  grid-row: 3;
+  overflow: hidden;
+  padding-bottom: calc(var(--gutter) + 40px);
+}
+
+.journey-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: clamp(20px, 3vw, 48px);
+  width: max-content;
+  will-change: transform;
+}
+
+.milestone {
+  position: relative;
+  width: clamp(260px, 30vw, 420px);
+  padding: 22px 22px 24px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: rgba(14, 12, 10, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.8s var(--ease-out),
+    border-color 0.6s;
+  opacity: 0.35;
+  transform: scale(0.94);
+}
+
+.milestone[data-state='past'] {
+  opacity: 0.55;
+}
+
+.milestone[data-state='on'] {
+  opacity: 1;
+  transform: none;
+  border-color: rgba(255, 90, 31, 0.6);
+}
+
+.milestone-step {
+  color: var(--ember);
+}
+
+.milestone-place {
+  position: absolute;
+  right: 18px;
+  top: 10px;
+  font-weight: 800;
+  font-size: 54px;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(239, 233, 221, 0.12);
+  pointer-events: none;
+}
+
+.milestone-title {
+  margin: 18px 0 0;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.milestone-stat {
+  margin: 0;
+  font-size: 18px;
+  color: var(--bone);
+}
+
+.milestone-role {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--ember);
+}
+
+.milestone-detail {
+  margin: 0;
+  color: var(--bone-dim);
+}

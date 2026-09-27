@@ -32,6 +32,17 @@ export const places = {
 
 const P = places
 
+function journeyKeys(): Key[] {
+  const stops = [P.jhansi, P.school, P.mhmun, P.hackfest, P.nymeria, P.zenith, P.unioffice, P.beacon]
+  const keys: Key[] = [{ at: 0, pos: [10, 70, -150], look: [-6, -3, -205], side: 0, up: 0.05, fog: [60, 260] }]
+  stops.forEach((st, j) => {
+    const at = 0.06 + (0.76 * j) / 7
+    keys.push({ at, pos: [st[0] * 0.6 + 10, 62, st[2] + 52], look: [st[0] * 0.6, -3, st[2] + 16], side: 0, up: 0.05, fog: [50, 240] })
+  })
+  keys.push({ at: 0.97, pos: [30, 60, -10], look: [0, -3, -80], side: 0, up: 0.05, fog: [60, 300] })
+  return keys
+}
+
 export const shots: Record<ChapterId, Key[]> = {
   hello: [{ at: 0, pos: [0, 0, 7.4], look: [0, 0, 0], side: 0, up: 0.04, fog: [14, 40] }],
   portal: [
@@ -73,10 +84,8 @@ export const shots: Record<ChapterId, Key[]> = {
     { at: 0, pos: [0, 15, -222], look: [0, 0, P.hackfest[2]], side: 0.36, up: 0.24, fog: [20, 100] },
     { at: 0.7, pos: [0, 12, -225], look: [0, 0.5, P.hackfest[2]], side: 0.36, up: 0.24, fog: [20, 100] },
   ],
-  journey: [
-    { at: 0, pos: [46, 86, -92], look: [0, -3, -132], side: 0, up: 0.05, fog: [80, 300] },
-    { at: 0.85, pos: [-40, 74, -176], look: [0, -3, -132], side: 0, up: 0.05, fog: [80, 300] },
-  ],
+  // one keyframe per milestone, synced with journeyProgress (0.06 + 0.76 * j / 7)
+  journey: journeyKeys(),
   services: [
     { at: 0, pos: [-44, 30, -40], look: [0, -3, -120], side: 0.35, up: 0.2, fog: [40, 260] },
     { at: 0.7, pos: [-50, 20, -104], look: [0, -3, -128], side: 0.35, up: 0.2, fog: [40, 260] },

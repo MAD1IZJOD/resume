@@ -8,6 +8,7 @@ import { Arena } from './Arena'
 import { Auditorium } from './Auditorium'
 import { City } from './City'
 import { Hackfest } from './Hackfest'
+import { Journey } from './Journey'
 import { Beacon, OrcadesSculpture, SimDistrict, UniofficeTower, VinacouShowroom } from './Landmarks'
 
 const contactIndex = chapters.findIndex((c) => c.id === 'contact')
@@ -43,6 +44,7 @@ export function World({ tier }: { tier: Tier }) {
       <Arena />
       <Auditorium />
       <Hackfest />
+      <Journey />
     </group>
   )
 }
