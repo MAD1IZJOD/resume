@@ -8,20 +8,21 @@ import { places } from '../shots'
 import type { V3 } from '../shots'
 import { Glow } from './Landmarks'
 
-// Chronological stops: must match `timeline` in content.ts (8 entries).
+// Chronological stops: must match `timeline` in content.ts (9 entries).
 const stops: V3[] = [
   places.jhansi,
   places.school,
   places.mhmun,
   places.hackfest,
   places.nymeria,
+  places.softworker,
   places.zenith,
   places.unioffice,
   places.beacon,
 ]
 // the path threads through every project on its way from Zenith to "now"
 const via: Record<number, V3[]> = {
-  5: [places.vinacou, places.simulator, places.orcades],
+  6: [places.vinacou, places.simulator, places.orcades],
 }
 
 function buildCurve() {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import * as content from './content'
-import { chapters, hackathon, hackfest, mhmun, person, projects, timeline } from './content'
+import { chapters, hackathon, hackfest, mhmun, person, projects, softworker, timeline } from './content'
 import { shots } from './scene/shots'
 
 describe('content', () => {
@@ -27,8 +27,15 @@ describe('content', () => {
     expect(hackathon).toMatchObject({ team: 'NYMERIA', result: 'Winner' })
   })
 
+  it('keeps the internship exact and in the right place in the story', () => {
+    expect(softworker).toEqual({ company: 'Softworker AI', role: 'Business Research Analyst Intern', focus: ['SEO', 'AEO', 'GEO'] })
+    const titles = timeline.map((m) => m.title)
+    expect(titles.indexOf('Softworker AI')).toBe(titles.indexOf('Global AI Community, Gurgaon Chapter') + 1)
+    expect(titles.indexOf('Zenith School of AI')).toBe(titles.indexOf('Softworker AI') + 1)
+  })
+
   it('has a timeline stop for every path node in the 3D journey', () => {
-    expect(timeline).toHaveLength(8)
+    expect(timeline).toHaveLength(9)
   })
 
   it('has camera shots for every chapter', () => {

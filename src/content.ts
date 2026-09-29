@@ -121,6 +121,13 @@ export const hackfest = {
   ],
 }
 
+// an internship: research on a real company's content, never "I ran their growth"
+export const softworker = {
+  company: 'Softworker AI',
+  role: 'Business Research Analyst Intern',
+  focus: ['SEO', 'AEO', 'GEO'], // search, answer engine and generative engine optimisation
+}
+
 export type Milestone = { place: string; title: string; detail?: string; stat?: string; role?: string }
 
 export const timeline: Milestone[] = [
@@ -129,6 +136,13 @@ export const timeline: Milestone[] = [
   { place: 'Jhansi', title: 'MHMUN', stat: '1,600+ students in one place', role: 'Creative Director' },
   { place: 'Jhansi', title: 'Hansraj Hackfest', stat: '130+ students learning to build', role: 'President' },
   { place: 'Gurugram', title: 'Global AI Community, Gurgaon Chapter', detail: 'A hackathon with team NYMERIA.', role: 'We won.' },
+  {
+    place: 'Work',
+    title: softworker.company,
+    stat: softworker.focus.join(' · '),
+    role: softworker.role,
+    detail: 'Real work at a real company. I researched how content gets found by search engines, answer engines and generative AI, and worked on the pipelines behind it.',
+  },
   { place: 'Gurugram', title: 'Zenith School of AI', detail: 'Where I’m learning now.' },
   { place: 'Online', title: 'UNIOFFICE · ORCADES · Business Simulator · Vinacou', detail: 'Things I’ve built and put out into the world.' },
   { place: 'Now', title: 'Still building', detail: 'Maybe the next one is yours.' },

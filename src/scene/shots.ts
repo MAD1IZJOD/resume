@@ -29,15 +29,17 @@ export const places = {
   jhansi: [-26, -3, -222] as V3,
   school: [-24, -3, -196] as V3,
   zenith: [24, -3, -150] as V3,
+  // no landmark here, just a stop on the journey path between NYMERIA and Zenith
+  softworker: [17, -3, -164] as V3,
 }
 
 const P = places
 
 function journeyKeys(): Key[] {
-  const stops = [P.jhansi, P.school, P.mhmun, P.hackfest, P.nymeria, P.zenith, P.unioffice, P.beacon]
+  const stops = [P.jhansi, P.school, P.mhmun, P.hackfest, P.nymeria, P.softworker, P.zenith, P.unioffice, P.beacon]
   const keys: Key[] = [{ at: 0, pos: [10, 70, -150], look: [-6, -3, -205], side: 0, up: 0.05, fog: [60, 260] }]
   stops.forEach((st, j) => {
-    const at = 0.06 + (0.76 * j) / 7
+    const at = 0.06 + (0.76 * j) / (stops.length - 1)
     keys.push({ at, pos: [st[0] * 0.6 + 10, 62, st[2] + 52], look: [st[0] * 0.6, -3, st[2] + 16], side: 0, up: 0.05, fog: [50, 240] })
   })
   keys.push({ at: 0.97, pos: [30, 60, -10], look: [0, -3, -80], side: 0, up: 0.05, fog: [60, 300] })
