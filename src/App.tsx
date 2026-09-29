@@ -12,6 +12,7 @@ import { Contact } from './sections/Contact'
 import { ProjectChapter } from './sections/Projects'
 import { RoomDemo } from './sections/RoomDemo'
 import { SimDemo } from './sections/SimDemo'
+import { Softworker } from './sections/Softworker'
 import { Cursor } from './ui/Cursor'
 import { Nav } from './ui/Nav'
 import { PhoneScreenPortal } from './ui/PhoneScreen'
@@ -110,6 +111,7 @@ export default function App() {
         <Nymeria />
         <Mhmun />
         <Hackfest />
+        <Softworker />
         <Journey />
         <Services />
         <Contact />

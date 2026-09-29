@@ -29,8 +29,7 @@ export const places = {
   jhansi: [-26, -3, -222] as V3,
   school: [-24, -3, -196] as V3,
   zenith: [24, -3, -150] as V3,
-  // no landmark here, just a stop on the journey path between NYMERIA and Zenith
-  softworker: [17, -3, -164] as V3,
+  softworker: [22, -3, -182] as V3,
 }
 
 const P = places
@@ -87,7 +86,11 @@ export const shots: Record<ChapterId, Key[]> = {
     { at: 0, pos: [0, 15, -222], look: [0, 0, P.hackfest[2]], side: 0.36, up: 0.24, fog: [20, 100] },
     { at: 0.7, pos: [0, 12, -225], look: [0, 0.5, P.hackfest[2]], side: 0.36, up: 0.24, fog: [20, 100] },
   ],
-  // one keyframe per milestone, synced with journeyProgress (0.06 + 0.76 * j / 7)
+  softworker: [
+    { at: 0, pos: [10, 9, -160], look: [P.softworker[0], 4.5, P.softworker[2]], side: 0.34, up: 0.22, fog: [16, 80] },
+    { at: 0.6, pos: [11, 6.5, -165], look: [P.softworker[0], 5, P.softworker[2]], side: 0.34, up: 0.22, fog: [14, 70] },
+  ],
+  // one keyframe per milestone, synced with journeyProgress (0.06 + 0.76 * j / (stops - 1))
   journey: journeyKeys(),
   services: [
     { at: 0, pos: [-44, 30, -40], look: [0, -3, -120], side: 0.35, up: 0.2, fog: [40, 260] },

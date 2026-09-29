@@ -125,7 +125,13 @@ export const hackfest = {
 export const softworker = {
   company: 'Softworker AI',
   role: 'Business Research Analyst Intern',
-  focus: ['SEO', 'AEO', 'GEO'], // search, answer engine and generative engine optimisation
+  accent: '#4fe0c9',
+  // what the research was about, not results
+  focus: [
+    { id: 'seo', name: 'SEO', full: 'Search Engine Optimization', line: 'How content gets found in search.' },
+    { id: 'aeo', name: 'AEO', full: 'Answer Engine Optimization', line: 'How content becomes the answer an assistant gives.' },
+    { id: 'geo', name: 'GEO', full: 'Generative Engine Optimization', line: 'How content shows up in what AI tools write.' },
+  ],
 }
 
 export type Milestone = { place: string; title: string; detail?: string; stat?: string; role?: string }
@@ -139,7 +145,7 @@ export const timeline: Milestone[] = [
   {
     place: 'Work',
     title: softworker.company,
-    stat: softworker.focus.join(' · '),
+    stat: softworker.focus.map((f) => f.name).join(' · '),
     role: softworker.role,
     detail: 'Real work at a real company. I researched how content gets found by search engines, answer engines and generative AI, and worked on the pipelines behind it.',
   },
@@ -215,6 +221,10 @@ export const copy = {
           { label: 'Hansraj Hackfest', id: 'hackfest' },
         ],
       },
+      {
+        claim: 'At work',
+        items: [{ label: 'Softworker AI', id: 'softworker' }],
+      },
     ],
     nowLabel: 'Now',
     schoolLabel: 'School',
@@ -245,6 +255,14 @@ export const copy = {
     roleLabel: 'my role',
     line: 'A group of us put it together so more students could learn to build things too.',
   },
+  softworker: {
+    kicker: 'At work',
+    meta: 'Internship',
+    tabsLabel: 'What I researched',
+    line: 'I researched how Softworker’s content gets found, and helped improve the content and research pipelines behind it.',
+    proves: 'I learned how a real team does research, content and growth.',
+    more: 'More on LinkedIn',
+  },
   journey: {
     kicker: 'The story so far',
     title: ['From Jhansi', 'to now.'],
@@ -269,6 +287,7 @@ export const chapters = [
   { id: 'nymeria', label: 'NYMERIA', group: 'Experience' },
   { id: 'mhmun', label: 'MHMUN', group: 'Experience' },
   { id: 'hackfest', label: 'Hansraj Hackfest', group: 'Experience' },
+  { id: 'softworker', label: 'Softworker AI', group: 'Experience' },
   { id: 'journey', label: 'Journey', group: 'Experience' },
   { id: 'services', label: 'What I make', group: 'What I make' },
   { id: 'contact', label: 'Contact', group: 'Contact' },

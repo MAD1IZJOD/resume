@@ -28,7 +28,16 @@ describe('content', () => {
   })
 
   it('keeps the internship exact and in the right place in the story', () => {
-    expect(softworker).toEqual({ company: 'Softworker AI', role: 'Business Research Analyst Intern', focus: ['SEO', 'AEO', 'GEO'] })
+    expect(softworker).toMatchObject({ company: 'Softworker AI', role: 'Business Research Analyst Intern' })
+    expect(softworker.focus.map((f) => [f.name, f.full])).toEqual([
+      ['SEO', 'Search Engine Optimization'],
+      ['AEO', 'Answer Engine Optimization'],
+      ['GEO', 'Generative Engine Optimization'],
+    ])
+    // work comes after the things I did with people, before the journey
+    const ids = chapters.map((c) => c.id)
+    expect(ids.indexOf('softworker')).toBe(ids.indexOf('hackfest') + 1)
+    expect(ids.indexOf('journey')).toBe(ids.indexOf('softworker') + 1)
     const titles = timeline.map((m) => m.title)
     expect(titles.indexOf('Softworker AI')).toBe(titles.indexOf('Global AI Community, Gurgaon Chapter') + 1)
     expect(titles.indexOf('Zenith School of AI')).toBe(titles.indexOf('Softworker AI') + 1)

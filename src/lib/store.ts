@@ -20,6 +20,8 @@ export const story = {
   simBars: new Array<number>(24).fill(0.08),
   /** Active Hackfest track (0 cloud, 1 web, 2 design). */
   track: 0,
+  /** Active Softworker focus (0 SEO, 1 AEO, 2 GEO). */
+  focus: 0,
   /** Vinacou "listen" pulse energy, decays in the scene. */
   pulse: 0,
 }

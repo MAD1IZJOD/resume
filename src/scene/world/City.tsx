@@ -48,7 +48,7 @@ const reserved: [number, number, number][] = [
   [places.school[0], places.school[2], 6],
   [places.jhansi[0], places.jhansi[2], 8],
   [places.zenith[0], places.zenith[2], 7],
-  [places.softworker[0], places.softworker[2], 4],
+  [places.softworker[0], places.softworker[2], 8],
 ]
 
 export function City({ tier }: { tier: Tier }) {

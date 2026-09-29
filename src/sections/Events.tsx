@@ -1,10 +1,11 @@
 import type { CSSProperties } from 'react'
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useRef } from 'react'
 import { copy, hackathon, hackfest, mhmun } from '../content'
-import { localT, mhmunFill, SEATS } from '../lib/chapterProgress'
+import { mhmunFill, SEATS } from '../lib/chapterProgress'
 import { story } from '../lib/store'
 import { useStoryFrame } from '../lib/useStoryFrame'
 import { useReveal } from '../lib/useReveal'
+import { useScrollTabs } from '../lib/useScrollTabs'
 import { Lines } from './Projects'
 
 export function Nymeria() {
@@ -102,30 +103,53 @@ export function Mhmun() {
   )
 }
 
+type Tab = { id: string; name: string; line: string; color: string }
+
+export function Tabs({ label, tabs, active, onPick }: { label: string; tabs: Tab[]; active: number; onPick: (i: number) => void }) {
+  const tabBase = useId()
+  const current = tabs[active]
+  const n = tabs.length
+  return (
+    <>
+      <div className="hf-tabs" role="tablist" aria-label={label} data-reveal>
+        {tabs.map((tr, i) => (
+          <button
+            key={tr.id}
+            id={`${tabBase}-tab-${i}`}
+            type="button"
+            role="tab"
+            aria-selected={active === i}
+            aria-controls={`${tabBase}-panel`}
+            tabIndex={active === i ? 0 : -1}
+            style={{ '--c': tr.color } as CSSProperties}
+            onClick={() => onPick(i)}
+            onKeyDown={(e) => {
+              if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
+              const next = (i + (e.key === 'ArrowRight' ? 1 : n - 1)) % n
+              onPick(next)
+              document.getElementById(`${tabBase}-tab-${next}`)?.focus()
+            }}
+          >
+            {tr.name}
+          </button>
+        ))}
+      </div>
+      <p id={`${tabBase}-panel`} role="tabpanel" aria-labelledby={`${tabBase}-tab-${active}`} className="hf-panel" data-reveal>
+        <span key={current.id}>{current.line}</span>
+      </p>
+    </>
+  )
+}
+
 export function Hackfest() {
   const ref = useRef<HTMLElement>(null)
-  const [track, setTrack] = useState(0)
-  const picked = useRef(false)
+  const [track, setTrack] = useScrollTabs(ref, 'hackfest', hackfest.tracks.length)
   useReveal(ref)
-
-  // scrolling walks through the tracks, unless the visitor has picked one
-  const onFrame = useCallback((t: number) => {
-    const local = localT(t, 'hackfest')
-    if (local < -0.3 || local > 1) {
-      picked.current = false
-      return
-    }
-    if (picked.current) return
-    const next = Math.min(2, Math.max(0, Math.floor((local - 0.05) / 0.2)))
-    setTrack((cur) => (cur === next ? cur : next))
-  }, [])
-  useStoryFrame(ref, onFrame)
 
   useEffect(() => {
     story.track = track
   }, [track])
 
-  const tabBase = useId()
   const current = hackfest.tracks[track]
 
   return (
@@ -148,36 +172,7 @@ export function Hackfest() {
             <Lines text={['Hansraj', 'Hackfest']} />
           </h2>
 
-          <div className="hf-tabs" role="tablist" aria-label="Hackfest tracks" data-reveal>
-            {hackfest.tracks.map((tr, i) => (
-              <button
-                key={tr.id}
-                id={`${tabBase}-tab-${i}`}
-                type="button"
-                role="tab"
-                aria-selected={track === i}
-                aria-controls={`${tabBase}-panel`}
-                tabIndex={track === i ? 0 : -1}
-                style={{ '--c': tr.color } as CSSProperties}
-                onClick={() => {
-                  picked.current = true
-                  setTrack(i)
-                }}
-                onKeyDown={(e) => {
-                  if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
-                  const n = (i + (e.key === 'ArrowRight' ? 1 : 2)) % 3
-                  picked.current = true
-                  setTrack(n)
-                  document.getElementById(`${tabBase}-tab-${n}`)?.focus()
-                }}
-              >
-                {tr.name}
-              </button>
-            ))}
-          </div>
-          <p id={`${tabBase}-panel`} role="tabpanel" aria-labelledby={`${tabBase}-tab-${track}`} className="hf-panel" data-reveal>
-            <span key={current.id}>{current.line}</span>
-          </p>
+          <Tabs label="Hackfest tracks" tabs={hackfest.tracks} active={track} onPick={setTrack} />
 
           <div className="hf-stats" data-reveal>
             <p>

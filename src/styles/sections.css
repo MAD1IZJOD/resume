@@ -803,6 +803,29 @@
   color: var(--accent);
 }
 
+/* ---------- Softworker AI ---------- */
+
+.softworker {
+  min-height: 300vh;
+}
+
+.softworker-title {
+  font-size: clamp(44px, 6vw, 100px);
+}
+
+.softworker-role {
+  margin: 0;
+  font-size: clamp(30px, 3vw, 46px);
+  line-height: 1;
+  color: var(--accent);
+}
+
+@media (max-width: 820px), (max-aspect-ratio: 9/10) {
+  .softworker .project-body {
+    display: none;
+  }
+}
+
 /* ---------- Journey ---------- */
 
 .journey {
